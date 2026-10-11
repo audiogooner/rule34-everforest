@@ -1,0 +1,57 @@
+{
+  "id": "alias-list",
+  "url": "https://rule34.xxx/index.php?page=alias&s=list",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:13:45.037Z",
+  "source": "live",
+  "classes": [
+    "current-page",
+    "even",
+    "flat-list",
+    "has-mail",
+    "highlightable",
+    "notice",
+    "pagination",
+    "pending",
+    "tableheader",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "add-box",
+    "aliases",
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "paginator",
+    "query",
+    "reason",
+    "reason-box",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title",
+    "subnavbar",
+    "tag_alias_alias",
+    "tag_alias_name",
+    "tag_alias_reason"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": [
+    "omitted 47 more tr.even (50 total)"
+  ]
+}

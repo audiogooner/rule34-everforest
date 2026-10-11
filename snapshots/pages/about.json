@@ -1,0 +1,40 @@
+{
+  "id": "about",
+  "url": "https://rule34.xxx/index.php?page=about",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:15:25.720Z",
+  "source": "live",
+  "classes": [
+    "content",
+    "flat-list",
+    "has-mail",
+    "notice",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

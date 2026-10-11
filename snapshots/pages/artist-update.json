@@ -1,0 +1,49 @@
+{
+  "id": "artist-update",
+  "url": "https://rule34.xxx/index.php?page=artist&s=update&id=32356",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:13:53.551Z",
+  "source": "live",
+  "classes": [
+    "current-page",
+    "flat-list",
+    "form",
+    "has-mail",
+    "no-block",
+    "notice",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "artist-update",
+    "artist_alias_names",
+    "artist_member_names",
+    "artist_name",
+    "artist_notes",
+    "artist_urls",
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title",
+    "subnavbar"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

@@ -1,0 +1,41 @@
+{
+  "id": "forum-add",
+  "url": "https://rule34.xxx/index.php?page=forum&s=add",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:14:12.699Z",
+  "source": "live",
+  "classes": [
+    "current-page",
+    "flat-list",
+    "has-mail",
+    "notice",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title",
+    "subnavbar"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

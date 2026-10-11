@@ -1,0 +1,43 @@
+{
+  "id": "pool-history",
+  "url": "https://rule34.xxx/index.php?page=pool&s=history&id=58987",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:14:05.795Z",
+  "source": "live",
+  "classes": [
+    "current-page",
+    "flat-list",
+    "has-mail",
+    "notice",
+    "pagination",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "paginator",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title",
+    "subnavbar"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

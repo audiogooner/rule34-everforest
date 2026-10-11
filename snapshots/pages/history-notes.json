@@ -1,0 +1,40 @@
+{
+  "id": "history-notes",
+  "url": "https://rule34.xxx/index.php?page=history&type=page_notes&id=15582469",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-11T15:51:41.764Z",
+  "source": "live",
+  "classes": [
+    "flat-list",
+    "has-mail",
+    "notice",
+    "row-highlight",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

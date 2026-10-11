@@ -1,0 +1,45 @@
+{
+  "id": "alias-add",
+  "url": "https://rule34.xxx/index.php?page=alias&s=add",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:13:46.194Z",
+  "source": "live",
+  "classes": [
+    "content",
+    "current-page",
+    "flat-list",
+    "has-mail",
+    "notice",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title",
+    "subnavbar",
+    "tag_alias_alias",
+    "tag_alias_name",
+    "tag_alias_reason"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

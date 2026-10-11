@@ -4,7 +4,12 @@
 @description     A dark theme for rule34.xxx using the Everforest medium palette
 @author          Nanumpf
 @preprocessor    default
-@namespace       https://rule34.xxx
+@namespace       https://github.com/nils-affentranger
+@homepageURL     https://github.com/audiogooner/rule34-everforest
+@supportURL      https://github.com/audiogooner/rule34-everforest/issues
+@updateURL       https://raw.githubusercontent.com/audiogooner/rule34-everforest/main/rule34.min.user.css
+@downloadURL     https://raw.githubusercontent.com/audiogooner/rule34-everforest/main/rule34.min.user.css
+@run-at          document-start
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://rule34.xxx") {
@@ -67,4 +72,294 @@
     background-color: var(--bg1) !important;
     border-color: var(--blue) !important;
   }
+}
+
+@-moz-document url("https://rule34.xxx/"), url("https://rule34.xxx/index.php") {
+  /* ----------------------------------------------------
+     HOMEPAGE
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=post&s=list") {
+  /* ----------------------------------------------------
+     POST LIST
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=post&s=view") {
+  /* ----------------------------------------------------
+     POST VIEW
+     ---------------------------------------------------- */
+}
+
+@-moz-document regexp("https://rule34\.xxx/index\.php\?page=post&s=add(?:&|$)") {
+  /* ----------------------------------------------------
+     POST ADD
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=post&s=addVideo") {
+  /* ----------------------------------------------------
+     POST ADD VIDEO
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=comment&s=list") {
+  /* ----------------------------------------------------
+     COMMENT LIST
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=wiki&s=list") {
+  /* ----------------------------------------------------
+     WIKI LIST
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=wiki&s=view") {
+  /* ----------------------------------------------------
+     WIKI VIEW
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=wiki&s=history") {
+  /* ----------------------------------------------------
+     WIKI HISTORY
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=wiki&s=create") {
+  /* ----------------------------------------------------
+     WIKI CREATE
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=alias&s=list") {
+  /* ----------------------------------------------------
+     ALIAS LIST
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=alias&s=add") {
+  /* ----------------------------------------------------
+     ALIAS ADD
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=artist&s=list") {
+  /* ----------------------------------------------------
+     ARTIST LIST
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=artist&s=show") {
+  /* ----------------------------------------------------
+     ARTIST SHOW
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=artist&s=create") {
+  /* ----------------------------------------------------
+     ARTIST CREATE
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=artist&s=update") {
+  /* ----------------------------------------------------
+     ARTIST UPDATE
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=tags&s=list") {
+  /* ----------------------------------------------------
+     TAGS LIST
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=tags&s=edit") {
+  /* ----------------------------------------------------
+     TAGS EDIT
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=list") {
+  /* ----------------------------------------------------
+     POOL LIST
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=show") {
+  /* ----------------------------------------------------
+     POOL SHOW
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=add") {
+  /* ----------------------------------------------------
+     POOL ADD
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=edit") {
+  /* ----------------------------------------------------
+     POOL EDIT
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=order") {
+  /* ----------------------------------------------------
+     POOL ORDER
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=import") {
+  /* ----------------------------------------------------
+     POOL IMPORT
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=history") {
+  /* ----------------------------------------------------
+     POOL HISTORY
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=post-pool-list") {
+  /* ----------------------------------------------------
+     POOL POST POOL LIST
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=forum&s=list") {
+  /* ----------------------------------------------------
+     FORUM LIST
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=forum&s=view") {
+  /* ----------------------------------------------------
+     FORUM VIEW
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=forum&s=add") {
+  /* ----------------------------------------------------
+     FORUM ADD
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=favorites&s=view") {
+  /* ----------------------------------------------------
+     FAVORITES VIEW
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=home") {
+  /* ----------------------------------------------------
+     ACCOUNT HOME
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=login") {
+  /* ----------------------------------------------------
+     ACCOUNT LOGIN
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=reg") {
+  /* ----------------------------------------------------
+     ACCOUNT REG
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=profile") {
+  /* ----------------------------------------------------
+     ACCOUNT PROFILE
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=options") {
+  /* ----------------------------------------------------
+     ACCOUNT OPTIONS
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=change_password") {
+  /* ----------------------------------------------------
+     ACCOUNT CHANGE PASSWORD
+     ---------------------------------------------------- */
+}
+
+@-moz-document regexp("https://rule34\.xxx/index\.php\?page=gmail(?:&(?!s=).*)?$") {
+  /* ----------------------------------------------------
+     GMAIL
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=gmail&s=home") {
+  /* ----------------------------------------------------
+     GMAIL HOME
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=gmail&s=view") {
+  /* ----------------------------------------------------
+     GMAIL VIEW
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=gmail&s=send_pm") {
+  /* ----------------------------------------------------
+     GMAIL SEND PM
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=history&type=tag_history") {
+  @charset "UTF-8";
+  /* ----------------------------------------------------
+     HISTORY — TAGS
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=history&type=page_notes") {
+  @charset "UTF-8";
+  /* ----------------------------------------------------
+     HISTORY — NOTES
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=icame") {
+  /* ----------------------------------------------------
+     ICAME
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=help") {
+  /* ----------------------------------------------------
+     HELP
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=about") {
+  /* ----------------------------------------------------
+     ABOUT
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=tos") {
+  /* ----------------------------------------------------
+     TOS
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/link.php") {
+  /* ----------------------------------------------------
+     LINK
+     ---------------------------------------------------- */
+}
+
+@-moz-document url-prefix("https://rule34.xxx/pp.php") {
+  /* ----------------------------------------------------
+     PP
+     ---------------------------------------------------- */
 }

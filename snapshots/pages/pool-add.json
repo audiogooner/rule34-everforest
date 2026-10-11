@@ -1,0 +1,46 @@
+{
+  "id": "pool-add",
+  "url": "https://rule34.xxx/index.php?page=pool&s=add",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:14:01.085Z",
+  "source": "live",
+  "classes": [
+    "cf-turnstile",
+    "current-page",
+    "flat-list",
+    "form",
+    "has-mail",
+    "notice",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "pool_description",
+    "pool_name",
+    "pool_type",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title",
+    "subnavbar"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

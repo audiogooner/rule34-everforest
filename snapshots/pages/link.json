@@ -1,0 +1,39 @@
+{
+  "id": "link",
+  "url": "https://rule34.xxx/link.php",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:15:28.123Z",
+  "source": "live",
+  "classes": [
+    "flat-list",
+    "has-mail",
+    "notice",
+    "section",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

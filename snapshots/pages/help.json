@@ -1,0 +1,41 @@
+{
+  "id": "help",
+  "url": "https://rule34.xxx/index.php?page=help",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:15:24.572Z",
+  "source": "live",
+  "classes": [
+    "current-page",
+    "flat-list",
+    "has-mail",
+    "notice",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title",
+    "static-more"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

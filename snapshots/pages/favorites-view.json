@@ -1,0 +1,43 @@
+{
+  "id": "favorites-view",
+  "url": "https://rule34.xxx/index.php?page=favorites&s=view&id=1",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:14:16.289Z",
+  "source": "live",
+  "classes": [
+    "flat-list",
+    "has-mail",
+    "image-list",
+    "notice",
+    "tfirst",
+    "thumb",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "paginator",
+    "pi",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

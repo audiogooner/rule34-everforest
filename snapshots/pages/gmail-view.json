@@ -1,0 +1,44 @@
+{
+  "id": "gmail-view",
+  "url": "https://rule34.xxx/index.php?page=gmail&s=view",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:15:16.327Z",
+  "source": "live",
+  "classes": [
+    "flat-list",
+    "has-mail",
+    "link-list",
+    "mailbuttons",
+    "mailfooter",
+    "mailhint",
+    "mailmessage",
+    "notice",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

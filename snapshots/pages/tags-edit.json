@@ -1,0 +1,44 @@
+{
+  "id": "tags-edit",
+  "url": "https://rule34.xxx/index.php?page=tags&s=edit&tag=kogurein",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:13:57.411Z",
+  "source": "live",
+  "classes": [
+    "current-page",
+    "flat-list",
+    "form",
+    "has-mail",
+    "notice",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title",
+    "subnavbar",
+    "tag_is_ambiguous",
+    "tag_name"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

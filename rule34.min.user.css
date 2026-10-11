@@ -4,7 +4,61 @@
 @description     A dark theme for rule34.xxx using the Everforest medium palette
 @author          Nanumpf
 @preprocessor    default
-@namespace       https://rule34.xxx
+@namespace       https://github.com/nils-affentranger
+@homepageURL     https://github.com/audiogooner/rule34-everforest
+@supportURL      https://github.com/audiogooner/rule34-everforest/issues
+@updateURL       https://raw.githubusercontent.com/audiogooner/rule34-everforest/main/rule34.min.user.css
+@downloadURL     https://raw.githubusercontent.com/audiogooner/rule34-everforest/main/rule34.min.user.css
+@run-at          document-start
 ==/UserStyle== */
 
-@-moz-document url-prefix("https://rule34.xxx"){:root{--bg_dim:#232a2e;--bg0:#2d353b;--bg1:#343f44;--bg2:#3d484d;--bg3:#475258;--bg4:#4f585e;--bg5:#56635f;--bg_visual:#543a48;--bg_red:#514045;--bg_yellow:#4d4c43;--bg_green:#425047;--bg_blue:#3a515d;--bg_purple:#4a444e;--fg:#d3c6aa;--red:#e67e80;--orange:#e69875;--yellow:#dbbc7f;--green:#a7c080;--aqua:#83c092;--blue:#7fbbb3;--purple:#d699b6;--grey0:#7a8478;--grey1:#859289;--grey2:#9da9a0;--statusline1:#a7c080;--statusline2:#d3c6aa;--statusline3:#e67e80}html,body{background-color:var(--bg0)!important;color:var(--fg)!important}a{color:var(--blue)!important}textarea,input{background-color:var(--bg1);color:var(--fg);border-radius:7px;outline:none;border:solid 1px var(--bg2)!important}textarea:focus,input:focus{background-color:var(--bg1)!important;border-color:var(--blue)!important}}
+@-moz-document url-prefix("https://rule34.xxx"){:root{--bg_dim:#232a2e;--bg0:#2d353b;--bg1:#343f44;--bg2:#3d484d;--bg3:#475258;--bg4:#4f585e;--bg5:#56635f;--bg_visual:#543a48;--bg_red:#514045;--bg_yellow:#4d4c43;--bg_green:#425047;--bg_blue:#3a515d;--bg_purple:#4a444e;--fg:#d3c6aa;--red:#e67e80;--orange:#e69875;--yellow:#dbbc7f;--green:#a7c080;--aqua:#83c092;--blue:#7fbbb3;--purple:#d699b6;--grey0:#7a8478;--grey1:#859289;--grey2:#9da9a0;--statusline1:#a7c080;--statusline2:#d3c6aa;--statusline3:#e67e80}html,body{background-color:var(--bg0)!important;color:var(--fg)!important}a{color:var(--blue)!important}textarea,input{background-color:var(--bg1);color:var(--fg);border-radius:7px;outline:none;border:solid 1px var(--bg3)!important}textarea:focus,input:focus{background-color:var(--bg1)!important;border-color:var(--blue)!important}}
+@-moz-document url("https://rule34.xxx/"), url("https://rule34.xxx/index.php"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=post&s=list"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=post&s=view"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=post&s=random"){}
+@-moz-document regexp("https://rule34\.xxx/index\.php\?page=post&s=add(?:&|$)"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=post&s=addVideo"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=comment&s=list"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=wiki&s=list"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=wiki&s=view"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=wiki&s=history"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=wiki&s=create"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=alias&s=list"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=alias&s=add"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=artist&s=list"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=artist&s=show"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=artist&s=create"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=artist&s=update"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=tags&s=list"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=tags&s=edit"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=list"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=show"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=add"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=edit"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=order"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=import"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=history"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=pool&s=post-pool-list"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=forum&s=list"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=forum&s=view"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=forum&s=add"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=forum&s=search"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=favorites&s=view"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=home"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=login"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=reg"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=profile"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=options"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=account&s=change_password"){}
+@-moz-document regexp("https://rule34\.xxx/index\.php\?page=gmail(?:&(?!s=).*)?$"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=gmail&s=home"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=gmail&s=view"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=gmail&s=send_pm"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=history"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=icame"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=help"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=about"){}
+@-moz-document url-prefix("https://rule34.xxx/index.php?page=tos"){}
+@-moz-document url-prefix("https://rule34.xxx/link.php"){}
+@-moz-document url-prefix("https://rule34.xxx/pp.php"){}

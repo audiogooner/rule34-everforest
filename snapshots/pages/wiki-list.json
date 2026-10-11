@@ -1,0 +1,51 @@
+{
+  "id": "wiki-list",
+  "url": "https://rule34.xxx/index.php?page=wiki&s=list",
+  "title": "Rule 34 Wiki",
+  "capturedAt": "2026-10-10T16:13:37.870Z",
+  "source": "live",
+  "classes": [
+    "content",
+    "current-page",
+    "flat-list",
+    "has-mail",
+    "highlightable",
+    "notice",
+    "pagination",
+    "sidebar",
+    "sidebar2",
+    "sidebar3",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "paginator",
+    "post-list",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "search",
+    "site-title",
+    "subnavbar",
+    "tag-sidebar"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

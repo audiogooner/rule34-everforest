@@ -1,0 +1,51 @@
+{
+  "id": "gmail-send-pm",
+  "url": "https://rule34.xxx/index.php?page=gmail&s=send_pm",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:15:17.819Z",
+  "source": "live",
+  "classes": [
+    "cf-turnstile",
+    "flat-list",
+    "has-mail",
+    "mailbody",
+    "mailbuttons",
+    "mailfooter",
+    "mailheader",
+    "mailhint",
+    "notice",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "bodyNotice",
+    "compose_pm",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "navbar",
+    "notice",
+    "preview",
+    "receiver",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title",
+    "title",
+    "txtBody"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}

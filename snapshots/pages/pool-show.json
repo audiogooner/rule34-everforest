@@ -1,0 +1,49 @@
+{
+  "id": "pool-show",
+  "url": "https://rule34.xxx/index.php?page=pool&s=show&id=58987",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:13:59.849Z",
+  "source": "live",
+  "classes": [
+    "current-page",
+    "flat-list",
+    "has-mail",
+    "image-list",
+    "notice",
+    "preview",
+    "tfirst",
+    "thumb",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "del-mode",
+    "has-mail-notice",
+    "header",
+    "info",
+    "long-notice",
+    "navbar",
+    "notice",
+    "pool-show",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title",
+    "subnavbar"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": [
+    "omitted 186 more span.thumb (189 total)"
+  ]
+}

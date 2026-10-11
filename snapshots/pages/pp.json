@@ -1,0 +1,42 @@
+{
+  "id": "pp",
+  "url": "https://rule34.xxx/pp.php",
+  "title": "Rule 34",
+  "capturedAt": "2026-10-10T16:15:29.412Z",
+  "source": "live",
+  "classes": [
+    "flat-list",
+    "has-mail",
+    "notice",
+    "section",
+    "tfirst",
+    "tlabel",
+    "tnomenu",
+    "tradio",
+    "tsecond"
+  ],
+  "ids": [
+    "body",
+    "content",
+    "has-mail-notice",
+    "header",
+    "long-notice",
+    "main-site-notice",
+    "navbar",
+    "notice",
+    "redirect-info",
+    "rlmainmenu",
+    "rlnomenu1",
+    "rlnomenu2",
+    "rlsubmenu",
+    "rmainmenu",
+    "rnomenu1",
+    "rnomenu2",
+    "rsubmenu",
+    "site-title"
+  ],
+  "stylesheets": [
+    "desktop.css"
+  ],
+  "notes": []
+}
