@@ -1,3 +1,154 @@
 /* ----------------------------------------------------
    HOMEPAGE
    ---------------------------------------------------- */
+
+body {
+  background-image: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+#static-index {
+  .index-header {
+    margin: 0;
+
+    a {
+      display: inline-block;
+      font-size: clamp(2.25rem, 6vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      text-decoration: none;
+
+      &::before {
+        content: "Rule34";
+        color: var(--aqua) !important;
+      }
+
+      &::after {
+        content: ".xxx";
+        color: var(--blue) !important;
+      }
+    }
+
+    img {
+      display: none !important;
+    }
+  }
+
+  > p:not(.index-header) {
+    display: none;
+  }
+
+  > #links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 1.15rem;
+    margin-top: 0.7rem;
+
+    > a {
+      margin: 0 !important;
+      color: var(--fg) !important;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--blue) !important;
+      }
+    }
+  }
+
+  /* Same control sizes as the Gelbooru homepage style: 400×32 field,
+     100×32 button, 0.5rem gap. Counter digits stay at 68×150. */
+  form {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.85rem;
+  }
+
+  .awesomplete {
+    box-sizing: border-box;
+    width: 400px;
+    max-width: calc(100vw - 2.5rem - 100px - 0.5rem);
+    min-width: 0;
+  }
+
+  #tags,
+  input[name="searchDefault"] {
+    box-sizing: border-box;
+    height: 32px;
+    font-size: revert;
+    line-height: normal;
+    border-radius: 7px;
+  }
+
+  #tags {
+    width: 100%;
+    padding: 0 0.75rem !important;
+  }
+
+  input[name="searchDefault"] {
+    flex: 0 0 auto;
+    width: 100px;
+    padding: 0 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    appearance: none;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+
+  > div:not([class]) {
+    margin-top: 0.85rem;
+    margin-bottom: 0 !important;
+    color: var(--grey1);
+    font-size: 0.8rem !important;
+
+    p {
+      margin: 0;
+    }
+
+    p:empty {
+      display: none;
+    }
+
+    p:has(img) {
+      margin-top: 0.85rem;
+    }
+
+    img {
+      width: auto;
+      height: 150px;
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+    }
+
+    small {
+      display: block;
+      margin-top: 0.65rem;
+      color: var(--grey1);
+      font-size: 0.75rem;
+      line-height: 1.5;
+
+      > div {
+        display: none;
+      }
+
+      a:not(:first-child)::before {
+        content: " · ";
+        color: var(--grey1);
+      }
+    }
+  }
+}

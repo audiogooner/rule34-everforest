@@ -13,6 +13,7 @@
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://rule34.xxx") {
+  @charset "UTF-8";
   :root {
     /* Everforest dark, medium */
     /* https://github.com/sainnhe/everforest/blob/master/palette.md */
@@ -47,12 +48,50 @@
     --statusline1: #a7c080;
     --statusline2: #d3c6aa;
     --statusline3: #e67e80;
+    /* SF Pro on macOS, Segoe UI on Windows, Roboto on Android. */
+    --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Code", "Segoe UI Mono", Menlo, Consolas, monospace;
   }
 
   html,
   body {
-    background-color: var(--bg0) !important;
+    background-color: var(--bg_dim) !important;
     color: var(--fg) !important;
+    font-family: var(--font-sans) !important;
+  }
+
+  /* The site sets Verdana here and Tahoma on headings. */
+  div,
+  p,
+  ul,
+  li,
+  dd,
+  dt,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans) !important;
+  }
+
+  /* Controls otherwise keep Arial or the browser face. */
+  button,
+  input,
+  select,
+  textarea {
+    font-family: var(--font-sans) !important;
+  }
+
+  code,
+  pre,
+  kbd,
+  samp,
+  tt,
+  .code,
+  div#wiki-diff > div#body {
+    font-family: var(--font-mono) !important;
   }
 
   a {
@@ -72,12 +111,204 @@
     background-color: var(--bg1) !important;
     border-color: var(--blue) !important;
   }
+
+  /* Awesomplete — same chrome as Gelbooru Catppuccin's .ui-autocomplete.
+     Rule34's items are plain "tag (count)" text (no .post-count / tag-type
+     markup), so CSS can match panel + alignment, not the split count row. */
+  .awesomplete {
+    text-align: left;
+  }
+
+  .awesomplete > ul {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: var(--bg1) !important;
+    border: none !important;
+    border-radius: 7px;
+    box-shadow: none !important;
+    overflow: hidden;
+    color: var(--fg) !important;
+    text-align: left !important;
+    text-shadow: none;
+    list-style: none;
+  }
+  .awesomplete > ul::before {
+    content: none !important;
+  }
+  .awesomplete > ul > li {
+    padding: 0.35em 0.75em !important;
+    color: var(--blue) !important;
+    text-align: left !important;
+  }
+  .awesomplete > ul > li:hover, .awesomplete > ul > li[aria-selected=true] {
+    margin: 0;
+    background: var(--bg2) !important;
+    color: var(--blue) !important;
+  }
+  .awesomplete > ul > li:first-child {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+  }
+  .awesomplete > ul > li:last-child {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+
+  .awesomplete mark {
+    background: transparent !important;
+    color: inherit !important;
+    font-weight: 700;
+  }
+
+  /* Join the open list to the field, like Gelbooru does when the menu is shown. */
+  .awesomplete:has(> ul:not([hidden]):not(:empty)) > input,
+  .awesomplete:has(> ul:not([hidden]):not(:empty)) > textarea {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  .awesomplete:has(> ul:not([hidden]):not(:empty)) > ul {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .awesomplete:has(> ul:not([hidden]):not(:empty)) > ul > li:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 }
 
 @-moz-document url("https://rule34.xxx/"), url("https://rule34.xxx/index.php") {
+  @charset "UTF-8";
   /* ----------------------------------------------------
      HOMEPAGE
      ---------------------------------------------------- */
+  body {
+    background-image: none !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  #static-index .index-header {
+    margin: 0;
+  }
+  #static-index .index-header a {
+    display: inline-block;
+    font-size: clamp(2.25rem, 6vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    text-decoration: none;
+  }
+  #static-index .index-header a::before {
+    content: "Rule34";
+    color: var(--aqua) !important;
+  }
+  #static-index .index-header a::after {
+    content: ".xxx";
+    color: var(--blue) !important;
+  }
+  #static-index .index-header img {
+    display: none !important;
+  }
+  #static-index > p:not(.index-header) {
+    display: none;
+  }
+  #static-index > #links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 1.15rem;
+    margin-top: 0.7rem;
+  }
+  #static-index > #links > a {
+    margin: 0 !important;
+    color: var(--fg) !important;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  #static-index > #links > a:hover {
+    color: var(--blue) !important;
+  }
+  #static-index {
+    /* Same control sizes as the Gelbooru homepage style: 400×32 field,
+       100×32 button, 0.5rem gap. Counter digits stay at 68×150. */
+  }
+  #static-index form {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.85rem;
+  }
+  #static-index .awesomplete {
+    box-sizing: border-box;
+    width: 400px;
+    max-width: calc(100vw - 2.5rem - 100px - 0.5rem);
+    min-width: 0;
+  }
+  #static-index #tags,
+  #static-index input[name=searchDefault] {
+    box-sizing: border-box;
+    height: 32px;
+    font-size: revert;
+    line-height: normal;
+    border-radius: 7px;
+  }
+  #static-index #tags {
+    width: 100%;
+    padding: 0 0.75rem !important;
+  }
+  #static-index input[name=searchDefault] {
+    flex: 0 0 auto;
+    width: 100px;
+    padding: 0 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    appearance: none;
+    cursor: pointer;
+  }
+  #static-index input[name=searchDefault]:hover {
+    background: var(--aqua) !important;
+  }
+  #static-index > div:not([class]) {
+    margin-top: 0.85rem;
+    margin-bottom: 0 !important;
+    color: var(--grey1);
+    font-size: 0.8rem !important;
+  }
+  #static-index > div:not([class]) p {
+    margin: 0;
+  }
+  #static-index > div:not([class]) p:empty {
+    display: none;
+  }
+  #static-index > div:not([class]) p:has(img) {
+    margin-top: 0.85rem;
+  }
+  #static-index > div:not([class]) img {
+    width: auto;
+    height: 150px;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+  }
+  #static-index > div:not([class]) small {
+    display: block;
+    margin-top: 0.65rem;
+    color: var(--grey1);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+  #static-index > div:not([class]) small > div {
+    display: none;
+  }
+  #static-index > div:not([class]) small a:not(:first-child)::before {
+    content: " · ";
+    color: var(--grey1);
+  }
 }
 
 @-moz-document url-prefix("https://rule34.xxx/index.php?page=post&s=list") {

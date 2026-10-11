@@ -2,12 +2,50 @@
 
 :root {
   @include palette.palette;
+  /* SF Pro on macOS, Segoe UI on Windows, Roboto on Android. */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Code", "Segoe UI Mono", Menlo, Consolas, monospace;
 }
 
 html,
 body {
-  background-color: var(--bg0) !important;
+  background-color: var(--bg_dim) !important;
   color: var(--fg) !important;
+  font-family: var(--font-sans) !important;
+}
+
+/* The site sets Verdana here and Tahoma on headings. */
+div,
+p,
+ul,
+li,
+dd,
+dt,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans) !important;
+}
+
+/* Controls otherwise keep Arial or the browser face. */
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-sans) !important;
+}
+
+code,
+pre,
+kbd,
+samp,
+tt,
+.code,
+div#wiki-diff > div#body {
+  font-family: var(--font-mono) !important;
 }
 
 a {
@@ -25,5 +63,78 @@ input {
   &:focus {
     background-color: var(--bg1) !important;
     border-color: var(--blue) !important;
+  }
+}
+
+/* Awesomplete — same chrome as Gelbooru Catppuccin's .ui-autocomplete.
+   Rule34's items are plain "tag (count)" text (no .post-count / tag-type
+   markup), so CSS can match panel + alignment, not the split count row. */
+.awesomplete {
+  text-align: left;
+}
+
+.awesomplete > ul {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--bg1) !important;
+  border: none !important;
+  border-radius: 7px;
+  box-shadow: none !important;
+  overflow: hidden;
+  color: var(--fg) !important;
+  text-align: left !important;
+  text-shadow: none;
+  list-style: none;
+
+  &::before {
+    content: none !important;
+  }
+
+  > li {
+    padding: 0.35em 0.75em !important;
+    color: var(--blue) !important;
+    text-align: left !important;
+
+    &:hover,
+    &[aria-selected="true"] {
+      margin: 0;
+      background: var(--bg2) !important;
+      color: var(--blue) !important;
+    }
+
+    &:first-child {
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 7px;
+      border-bottom-right-radius: 7px;
+    }
+  }
+}
+
+.awesomplete mark {
+  background: transparent !important;
+  color: inherit !important;
+  font-weight: 700;
+}
+
+/* Join the open list to the field, like Gelbooru does when the menu is shown. */
+.awesomplete:has(> ul:not([hidden]):not(:empty)) {
+  > input,
+  > textarea {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  > ul {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    > li:first-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
   }
 }

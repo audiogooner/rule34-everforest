@@ -8,6 +8,10 @@ export default {
     "dead-selector": [
       "#rule34-dev-overlay",
       "#rule34-dev-overlay *",
+      // Suggestion rows are filled in by Awesomplete after a keystroke.
+      ".awesomplete > ul > li*",
+      ".awesomplete mark",
+      ".awesomplete:has*",
     ],
   },
   snapshotMap: {},
