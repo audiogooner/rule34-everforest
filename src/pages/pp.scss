@@ -1,3 +1,97 @@
 /* ----------------------------------------------------
-   PP
+   PP — deprecated landing / censorship notice (pp.php)
+   DOM: #content > div (40em) > .section > #main-site-notice,
+   #redirect-info. Static prose shell aligned with tos/about/help.
    ---------------------------------------------------- */
+
+div#content {
+  box-sizing: border-box;
+  padding: 1.25rem 20px 2rem !important;
+  text-align: left;
+  color: var(--grey1);
+  font-size: 13px;
+  line-height: 1.6;
+
+  @media only screen and (min-width: 851px) {
+    padding-left: 60px !important;
+  }
+
+  > br {
+    display: none;
+  }
+
+  > div {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 40em;
+    margin-inline: auto !important;
+    padding: 0 10px;
+  }
+}
+
+div#content div.section {
+  margin: 0;
+  padding: 1.25rem 1.35rem 1.5rem;
+  color: var(--fg);
+  background: var(--bg0);
+  border: 1px solid var(--bg2);
+  border-radius: 10px;
+
+  > style {
+    display: none !important;
+  }
+
+  p {
+    margin: 0 0 0.85rem;
+    color: var(--fg);
+    line-height: 1.55;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: var(--blue) !important;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--aqua) !important;
+    }
+  }
+}
+
+#main-site-notice {
+  margin: 0 0 1rem !important;
+  padding: 0.65rem 0.9rem !important;
+  text-align: center !important;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--fg) !important;
+  background: var(--bg_red) !important;
+  border: 1px solid var(--red) !important;
+  border-radius: 10px;
+
+  a {
+    color: var(--yellow) !important;
+    text-decoration: underline !important;
+
+    &:hover {
+      color: var(--orange) !important;
+    }
+  }
+}
+
+#redirect-info {
+  padding: 0.5rem 0 0 !important;
+  text-align: center !important;
+  color: var(--grey1);
+
+  p {
+    color: var(--grey1);
+  }
+
+  a {
+    font-weight: 600;
+  }
+}

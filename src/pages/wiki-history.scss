@@ -1,3 +1,100 @@
 /* ----------------------------------------------------
    WIKI HISTORY
+   Revision list (gelbooru wiki-history pattern; Rule34
+   uses two columns: version label + excerpt / metadata).
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href*="page=wiki"][href*="s=history"] {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+/* Create is green globally in base.scss (#subnavbar s=create). */
+
+#content {
+  padding: 1.25rem 1.25rem 2rem !important;
+  text-align: left;
+
+  > div > br,
+  > br {
+    display: none;
+  }
+
+  h3 {
+    display: block;
+    margin: 0 0 1.5rem;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.25;
+    color: var(--fg);
+  }
+}
+
+table.highlightable {
+  width: 100%;
+  color: var(--fg) !important;
+  font-size: 12px;
+
+  td {
+    padding: 0.75rem 1rem !important;
+    color: var(--fg) !important;
+    vertical-align: middle;
+    word-break: break-word;
+  }
+
+  tr:hover > td {
+    background: var(--bg1) !important;
+  }
+
+  /* Version label (V1, V2, …) — site sets bold inline on first cell */
+  td:first-child {
+    width: 1%;
+    min-width: 3.5rem;
+    color: var(--grey0) !important;
+    font-size: 1.05em !important;
+    font-weight: bold !important;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* Excerpt + "Updated by" metadata */
+  td:nth-child(2) {
+    line-height: 1.55;
+
+    br {
+      display: none;
+    }
+
+    span[style*="878686"] {
+      display: block;
+      margin-top: 0.4rem;
+      color: var(--grey1) !important;
+      font-size: 11px !important;
+
+      a {
+        color: var(--grey0) !important;
+
+        &:hover {
+          color: var(--blue) !important;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #content {
+    padding: 1rem 0.75rem 1.5rem !important;
+  }
+
+  table.highlightable {
+    td {
+      padding: 0.55rem 0.6rem !important;
+    }
+
+    td:first-child {
+      min-width: 2.75rem;
+      font-size: 1em !important;
+    }
+  }
+}

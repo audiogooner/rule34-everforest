@@ -1,3 +1,240 @@
 /* ----------------------------------------------------
    COMMENT LIST
+   Global comment index: post thumb + metadata, nested
+   response-list threads. Patterns from gelbooru
+   comment-list; selectors from Rule34 snapshots.
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href*="page=comment"][href*="s=list"] {
+  color: var(--blue) !important;
+}
+
+div#content > div#paginator {
+  --paginator-inset-x: 20px;
+}
+
+div#comments {
+  max-width: 56rem;
+  color: var(--fg);
+}
+
+div#comments div#comment-list {
+  > br {
+    display: none;
+  }
+
+  /* Post row: thumb + metadata + comment thread */
+  > div.post {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 1rem 1.25rem;
+    float: none !important;
+    clear: none !important;
+    margin-bottom: 2.75rem !important;
+  }
+
+  > div.content {
+    grid-column: 1 / -1;
+    margin: 0.25rem 0 0.5rem;
+    color: var(--grey1);
+    font-size: 0.9rem;
+
+    a#ci {
+      color: var(--blue) !important;
+      font-weight: 600;
+
+      &:hover {
+        color: var(--aqua) !important;
+      }
+    }
+  }
+
+  div.col1.thumb {
+    float: none !important;
+    width: auto !important;
+    margin: 0;
+
+    a {
+      display: block;
+      overflow: hidden;
+      border-radius: 7px;
+    }
+
+    img.preview {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      border: 1px solid var(--bg2);
+      border-radius: 7px;
+      transition:
+        transform 220ms ease,
+        border-radius 220ms ease,
+        box-shadow 220ms ease;
+    }
+
+    a:hover img.preview {
+      border-radius: 0;
+      transform: scale(1.04);
+      box-shadow:
+        0 0 0 1px var(--bg2),
+        0 4px 16px color-mix(in srgb, var(--bg_dim) 45%, transparent);
+    }
+
+    a:has(> img.webm-thumb),
+    a:has(> img[title~="video"]),
+    a:has(> img[alt~="video"]) {
+      img.preview {
+        box-shadow:
+          0 0 0 2px color-mix(in srgb, var(--blue) 55%, transparent),
+          0 0 0 3px var(--bg1);
+      }
+
+      &:hover img.preview {
+        box-shadow:
+          0 0 0 3px color-mix(in srgb, var(--blue) 28%, var(--bg1)),
+          0 0 0 5px color-mix(in srgb, var(--blue) 88%, transparent),
+          0 7px 22px color-mix(in srgb, var(--blue) 26%, transparent);
+      }
+    }
+  }
+
+  div.col2 {
+    float: none !important;
+    width: auto !important;
+    min-width: 0;
+  }
+
+  div.header {
+    margin-bottom: 1rem !important;
+    color: var(--fg);
+    line-height: 1.55;
+
+    > div:first-child {
+      margin-bottom: 0.65rem;
+    }
+
+    span.info {
+      margin-right: 1em;
+      color: var(--grey1) !important;
+
+      strong {
+        color: var(--grey2);
+        font-weight: 600;
+      }
+    }
+
+    div.tags {
+      width: auto !important;
+      max-width: 100%;
+      line-height: 1.55;
+
+      > strong {
+        color: var(--grey2);
+        font-weight: 600;
+      }
+
+      > span {
+        margin: 0 0.5em 0 0;
+      }
+    }
+  }
+
+  div.response-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    clear: both;
+
+    > div.post {
+      display: grid;
+      grid-template-columns: minmax(0, 12.5rem) minmax(0, 1fr);
+      gap: 0.65rem 1rem;
+      float: none !important;
+      clear: none !important;
+      margin-bottom: 0 !important;
+    }
+
+    div.author {
+      float: none !important;
+      width: auto !important;
+      padding: 0 !important;
+      overflow: visible;
+
+      > h6 {
+        margin: 0 0 0.25rem;
+        font-size: 1.05em;
+        font-weight: 600;
+        line-height: 1.35;
+
+        a {
+          color: var(--fg) !important;
+
+          &:hover {
+            color: var(--aqua) !important;
+          }
+        }
+      }
+
+      span.date {
+        display: block;
+        color: var(--grey1);
+        font-size: 0.82rem;
+        line-height: 1.4;
+      }
+    }
+
+    div.content {
+      float: none !important;
+      width: auto !important;
+      min-width: 0;
+      padding: 0 !important;
+      margin: 0 !important;
+
+      div.body {
+        padding: 0.8rem 1rem !important;
+        color: var(--fg);
+        line-height: 1.55;
+        background: var(--bg1) !important;
+        border: 1px solid var(--bg2);
+        border-radius: 10px;
+      }
+
+      div.footer {
+        margin-top: 0.65rem !important;
+        color: var(--grey1) !important;
+        font-size: 0.85rem;
+
+        a {
+          color: var(--grey2) !important;
+
+          &:hover {
+            color: var(--aqua) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  div#comments div#comment-list {
+    > div.post {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    div.col1.thumb {
+      max-width: 200px;
+    }
+
+    div.response-list > div.post {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  div#comments div#comment-list div.col1.thumb img.preview {
+    transition: none;
+  }
+}

@@ -1,3 +1,182 @@
+@use "sticky-paginator";
+
 /* ----------------------------------------------------
-   GMAIL HOME
+   GMAIL HOME (inbox list)
+   Rule34: #pminbox + table.highlightable + #footer.
+   Gelbooru gmail-home used .mainBodyPadding and #tag-list
+   folder nav — not present in Rule34 snapshots.
    ---------------------------------------------------- */
+
+div#pminbox {
+  width: 100%;
+  max-width: 56rem;
+  color: var(--fg);
+  font-size: 14px;
+  line-height: 1.55;
+
+  > br {
+    display: none;
+  }
+
+  > h4 {
+    margin: 0 0 1rem;
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+  }
+
+  > div[style*="ff0000"],
+  > div[style*="#ff0000"] {
+    margin: 0 0 1rem !important;
+    padding: 0.65rem 1rem !important;
+    color: var(--red) !important;
+    font-weight: 500;
+    line-height: 1.45;
+    background: var(--bg1) !important;
+    border: 1px solid var(--red) !important;
+    border-radius: 10px;
+
+    b {
+      color: inherit !important;
+      font-weight: 600;
+    }
+  }
+
+  table.highlightable {
+    width: 100% !important;
+    margin: 0 !important;
+    table-layout: fixed;
+    border-radius: 10px 10px 0 0 !important;
+    border-bottom: none !important;
+
+    tr.tableheader th {
+      padding: 0.55rem 0.75rem !important;
+      text-align: left !important;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+
+    tbody > tr:not(.tableheader) > td {
+      padding: 0.65rem 0.75rem !important;
+      vertical-align: middle;
+      text-align: left !important;
+      color: var(--fg) !important;
+      word-break: break-word;
+    }
+
+    tbody > tr:not(.tableheader):nth-child(even) {
+      background: var(--bg1) !important;
+    }
+
+    tbody > tr:not(.tableheader):nth-child(odd) {
+      background: var(--bg0) !important;
+    }
+
+    tbody > tr:not(.tableheader):hover {
+      background: var(--bg2) !important;
+    }
+
+    tbody > tr:not(.tableheader) > td:first-child {
+      width: 2rem;
+      text-align: center;
+      white-space: nowrap;
+
+      input[type="checkbox"] {
+        margin: 0;
+        accent-color: var(--blue);
+        vertical-align: middle;
+      }
+    }
+
+    tbody > tr:not(.tableheader) > td:nth-child(2),
+    tbody > tr:not(.tableheader) > td:nth-child(3) {
+      color: var(--grey1) !important;
+      font-size: 0.92em;
+
+      a {
+        color: var(--grey1) !important;
+        font-weight: 500;
+
+        &:hover {
+          color: var(--fg) !important;
+        }
+      }
+    }
+
+    tbody > tr:not(.tableheader) > td:nth-child(4) a {
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    tbody > tr:not(.tableheader) > td:nth-child(5) {
+      color: var(--grey1) !important;
+      font-size: 0.92em;
+      white-space: nowrap;
+      text-align: right !important;
+    }
+
+    thead tr.tableheader th:nth-child(5),
+    tr.tableheader th:nth-child(5) {
+      text-align: right !important;
+    }
+  }
+
+  div#footer {
+    margin: 0 0 1.25rem;
+    padding: 0.65rem 0.85rem !important;
+    text-align: center;
+    line-height: 1.6;
+    color: var(--grey1);
+    background: var(--bg2) !important;
+    border: 1px solid var(--bg2);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+
+    a[href*="s=send_pm"] {
+      color: var(--green) !important;
+      font-weight: 600;
+
+      &:hover {
+        color: var(--aqua) !important;
+      }
+    }
+
+    a[href*="s=outbox"] {
+      color: var(--blue) !important;
+      font-weight: 600;
+
+      &:hover {
+        color: var(--aqua) !important;
+      }
+    }
+  }
+}
+
+div#content > div.pagination div#paginator {
+  @include sticky-paginator.compact;
+}
+
+@media only screen and (max-width: 850px) {
+  div#pminbox table.highlightable {
+    thead tr.tableheader th:nth-child(4),
+    thead tr.tableheader th:nth-child(5),
+    tr.tableheader th:nth-child(4),
+    tr.tableheader th:nth-child(5),
+    tbody > tr:not(.tableheader) > td:nth-child(4),
+    tbody > tr:not(.tableheader) > td:nth-child(5) {
+      display: none !important;
+    }
+
+    th + th,
+    td + td {
+      border-left: none !important;
+    }
+
+    tr.tableheader th:nth-child(3),
+    tbody > tr:not(.tableheader) > td:nth-child(3) {
+      border-left: 1px solid var(--bg2) !important;
+    }
+  }
+}

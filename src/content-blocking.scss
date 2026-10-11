@@ -1,0 +1,28 @@
+/* ----------------------------------------------------
+   CONTENT BLOCKING
+   ---------------------------------------------------- */
+
+/* navbar sponsored affiliate */
+#header #navbar > li:has(> a[rel="sponsored"]),
+
+/* ExoClick units + hosts */
+ins.eas6a97888e38,
+[data-nosnippet]:has(ins.eas6a97888e38),
+
+/* gamingadult affiliate (top leaderboard / right rail; may replace ExoClick) */
+a[href*="gamingadult.com"],
+[data-nosnippet]:has(a[href*="gamingadult.com"]),
+
+/* post-list bottom banner rows (one may be an empty placeholder) */
+div#post-list .horizontalFlexWithMargins[data-nosnippet],
+
+/* post-view bottom affiliate row (same flex wrapper as post-list) */
+div#post-view .horizontalFlexWithMargins,
+
+/* right affiliate rails */
+div.postListSidebarRight,
+div.postViewSidebarRight,
+[data-nosnippet]:has(.postListSidebarRight),
+[data-nosnippet]:has(.postViewSidebarRight) {
+  display: none !important;
+}

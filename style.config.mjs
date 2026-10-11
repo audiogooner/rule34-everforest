@@ -227,7 +227,7 @@ const pageBundles = [
   },
   {
     file: "src/pages/gmail-home.scss",
-    document: docPrefix("/index.php?page=gmail&s=home"),
+    document: docPrefix("/index.php?page=gmail&s=list"),
   },
   {
     file: "src/pages/gmail-view.scss",
@@ -473,7 +473,7 @@ export const snapshotPages = [
   },
   {
     id: "gmail-home",
-    url: `${origin}/index.php?page=gmail&s=home`,
+    url: `${origin}/index.php?page=gmail&s=list`,
     ...live,
   },
   {

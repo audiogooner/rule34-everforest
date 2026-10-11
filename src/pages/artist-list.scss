@@ -1,3 +1,142 @@
+@use "sticky-paginator";
+
 /* ----------------------------------------------------
    ARTIST LIST
+   Inline search (#search-form) + highlightable table
+   (P / E / D actions, name, updated by). Patterns from
+   tags-list + forum-list search; Rule34 snapshot DOM.
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href*="page=artist"][href*="s=list"] {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+#header #subnavbar > li > a[href="#"] {
+  color: var(--green) !important;
+}
+
+#content {
+  > br {
+    display: none;
+  }
+}
+
+#content #search-form {
+  margin: 0 0 1rem !important;
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+    max-width: 36rem;
+  }
+
+  input[type="hidden"] {
+    display: none;
+  }
+
+  #name {
+    flex: 1 1 12rem;
+    min-width: 0;
+    box-sizing: border-box;
+    width: auto !important;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  input[type="submit"] {
+    flex: 0 0 auto;
+    width: auto !important;
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+}
+
+#content table.highlightable {
+  width: 100% !important;
+
+  td {
+    padding: 0.45rem 0.75rem;
+    word-break: break-word;
+    vertical-align: middle;
+  }
+
+  tbody > tr:not(.tableheader) > td:first-child {
+    white-space: nowrap;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--grey1);
+
+    a {
+      display: inline-block;
+      min-width: 1.1rem;
+      margin-right: 0.35rem;
+      text-align: center;
+      text-decoration: none !important;
+      font-weight: 600;
+
+      &[title="Find posts for artist"] {
+        color: var(--blue) !important;
+
+        &:hover {
+          color: var(--aqua) !important;
+        }
+      }
+
+      &[title="Edit artist"] {
+        color: var(--green) !important;
+
+        &:hover {
+          color: var(--aqua) !important;
+        }
+      }
+
+      &[title="Delete artist"] {
+        color: var(--red) !important;
+
+        &:hover {
+          color: var(--orange) !important;
+        }
+      }
+    }
+  }
+
+  tbody > tr:not(.tableheader) > td:nth-child(2) a {
+    color: var(--blue) !important;
+    font-weight: 600;
+
+    &:hover {
+      color: var(--aqua) !important;
+    }
+  }
+
+  tbody > tr:not(.tableheader) > td:nth-child(3) {
+    color: var(--grey1);
+  }
+}
+
+div#paginator {
+  @include sticky-paginator.compact;
+}
+
+@media only screen and (max-width: 600px) {
+  #content table.highlightable {
+    thead tr.tableheader th:nth-child(3),
+    tbody > tr:not(.tableheader) > td:nth-child(3) {
+      display: none !important;
+    }
+  }
+}

@@ -1,4 +1,7 @@
 @use "palette";
+@use "content-blocking";
+@use "highlightable-table";
+@use "sticky-paginator";
 
 :root {
   @include palette.palette;
@@ -49,7 +52,213 @@ div#wiki-diff > div#body {
 }
 
 a {
+  cursor: pointer;
+  text-decoration: none;
   color: var(--blue) !important;
+}
+
+/* ----------------------------------------------------
+   HEADER / NAV
+   Matches Gelbooru Catppuccin default-chrome navbar
+   (posts-page .topnav / .navSubmenu geometry) on Rule34's
+   #header / #navbar / #subnavbar markup.
+   `display` for #navbar / #subnavbar is only set in the
+   desktop media query so mobile.css can still toggle them.
+   ---------------------------------------------------- */
+#header {
+  --header-pad-y-top: 16px;
+  --header-pad-y-bottom: 18px;
+  --header-sub-pad-y: 12px;
+
+  overflow: hidden;
+  margin-bottom: 0 !important;
+  background: var(--bg0) !important;
+  background-image: none !important;
+  font-family: var(--font-sans);
+
+  > .tradio,
+  > .tlabel {
+    position: absolute;
+  }
+
+  #site-title {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    background-image: none !important;
+
+    a {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      height: 100%;
+      margin: 0 !important;
+      padding: 0 10px 0 20px !important;
+      color: var(--aqua) !important;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      text-decoration: none;
+      
+    }
+  }
+
+  #navbar {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    background-image: none !important;
+
+    > li {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: none !important;
+      background-image: none !important;
+      border: 0 !important;
+
+      > a {
+        display: block;
+        width: auto !important;
+        height: auto !important;
+        padding: var(--header-pad-y-top) 14px var(--header-pad-y-bottom) !important;
+        color: var(--fg) !important;
+        font-family: var(--font-sans);
+        font-weight: normal !important;
+        font-size: 0.85rem;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      &.current-page > a,
+      &.current-page > a:hover {
+        padding: var(--header-pad-y-top) 14px var(--header-pad-y-bottom) !important;
+        color: var(--blue) !important;
+        font-weight: bold !important;
+        background-color: var(--bg2) !important;
+      }
+
+      &:not(.current-page) > a:hover {
+        background-color: var(--bg1) !important;
+      }
+    }
+
+    a[href*="page=help"] {
+      color: var(--green) !important;
+    }
+  }
+
+  #subnavbar {
+    margin: 0 !important;
+    padding: 0 15px !important;
+    list-style: none !important;
+    background: var(--bg1) !important;
+    background-image: none !important;
+
+    > li {
+      margin: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+
+      > a {
+        display: block;
+        margin: 0 !important;
+        padding: var(--header-sub-pad-y) 14px !important;
+        color: var(--fg) !important;
+        font-family: var(--font-sans);
+        font-weight: normal;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        text-decoration: none;
+        cursor: pointer;
+        background: transparent !important;
+
+        &:hover {
+          background-color: var(--bg2) !important;
+        }
+      }
+
+      > a[href*="s=add"],
+      > a[href*="s=create"],
+      > a[href*="addVideo"] {
+        color: var(--green) !important;
+      }
+
+      > a[href*="page=help"],
+      > a[href*="topic="],
+      > a[href="#"] {
+        color: var(--green) !important;
+      }
+
+      > a[href*="removeartist"],
+      > a[href*="action=delete"],
+      > a[href*="remove.php"] {
+        color: var(--red) !important;
+      }
+    }
+  }
+}
+
+/* Desktop / tablet: brand + main nav on one row, submenu full-bleed below. */
+@media screen and (min-width: 851px) {
+  #header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+
+    #site-title {
+      flex: 0 0 auto;
+    }
+
+    #navbar {
+      display: flex;
+      /* basis 0 + min-width 0: share the row with #site-title instead of
+         wrapping the whole list under the brand (max-content basis). */
+      flex: 1 1 0;
+      flex-wrap: wrap;
+      align-items: stretch;
+      min-width: 0;
+
+      > li {
+        display: block;
+        float: none;
+      }
+    }
+
+    #subnavbar {
+      display: flex;
+      flex: 1 0 100%;
+      flex-wrap: wrap;
+      align-items: stretch;
+
+      > li {
+        display: block;
+        float: none;
+      }
+    }
+  }
+}
+
+/* Mobile stylesheet: stack the absolute dropdown and theme the toggles. */
+#rmainmenu:checked ~ #navbar,
+#rsubmenu:checked ~ #subnavbar {
+  > li {
+    float: none !important;
+    width: 100%;
+  }
+
+  > li > a {
+    padding: 12px 16px !important;
+  }
+}
+
+.tlabel {
+  filter: invert(1) brightness(1.15);
+  opacity: 0.85;
+}
+
+.tnomenu {
+  background-color: var(--bg2) !important;
 }
 
 textarea,
@@ -64,6 +273,79 @@ input {
     background-color: var(--bg1) !important;
     border-color: var(--blue) !important;
   }
+}
+
+/* ----------------------------------------------------
+   BUTTONS (primary / secondary)
+   ---------------------------------------------------- */
+input.searchList,
+input[type="submit"].searchList {
+  padding: 0.55rem 1.25rem !important;
+  color: var(--bg_dim) !important;
+  font-weight: 600;
+  background: var(--blue) !important;
+  border: none !important;
+  border-radius: 7px !important;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--aqua) !important;
+  }
+}
+
+input[type="button"],
+input[type="reset"] {
+  padding: 0.55rem 1.25rem !important;
+  color: var(--fg) !important;
+  font-weight: 600;
+  background: var(--bg2) !important;
+  border: none !important;
+  border-radius: 7px !important;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--bg3) !important;
+  }
+}
+
+/* ----------------------------------------------------
+   NOTICES
+   ---------------------------------------------------- */
+div.has-mail {
+  box-sizing: border-box;
+  margin: 0.75rem 1.25rem !important;
+  padding: 0.65rem 1rem !important;
+  color: var(--green) !important;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  background: var(--bg0) !important;
+  border: 1px solid var(--green) !important;
+  border-radius: 10px;
+
+  a {
+    color: var(--green) !important;
+    font-weight: 600;
+  }
+}
+
+div.notice {
+  margin-bottom: 1em;
+  padding-left: 0;
+  color: var(--red) !important;
+  font-size: 1.05em;
+  font-weight: 600;
+}
+
+#notice.notice {
+  margin: 0.75rem 1.25rem;
+  padding: 0.65rem 1rem;
+  color: var(--bg_dim) !important;
+  font-weight: 600;
+  background: var(--red) !important;
+  border: none !important;
+  border-radius: 10px;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--red) 45%, transparent);
 }
 
 /* Awesomplete — same chrome as Gelbooru Catppuccin's .ui-autocomplete.
@@ -136,5 +418,267 @@ input {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
+  }
+}
+
+/* ----------------------------------------------------
+   TAG STYLING
+   Matches Gelbooru Catppuccin: type-colored links + soft glow on hover.
+   Copyright → purple (Catppuccin pink); metadata → yellow.
+   ---------------------------------------------------- */
+.tag-type-artist,
+.tag-type-character,
+.tag-type-copyright,
+.tag-type-metadata,
+.tag-type-general {
+  > span,
+  > .tag-count {
+    color: var(--grey1) !important;
+    transition: text-shadow 0.1s;
+  }
+
+  &:hover > span,
+  &:hover > .tag-count {
+    text-shadow: 0 0 10px var(--grey1) !important;
+  }
+}
+
+@each $type, $color in (
+  artist: red,
+  character: green,
+  copyright: purple,
+  metadata: yellow,
+  general: blue
+) {
+  .tag-type-#{$type} {
+    > a {
+      color: var(--#{$color}) !important;
+      transition: text-shadow 0.1s;
+    }
+
+    &:hover > a {
+      text-shadow: 0 0 10px var(--#{$color});
+    }
+  }
+
+  a.tag-type-#{$type} {
+    color: var(--#{$color}) !important;
+    transition: text-shadow 0.1s;
+
+    &:hover {
+      text-shadow: 0 0 10px var(--#{$color});
+    }
+  }
+}
+
+.tag-count {
+  color: var(--grey1) !important;
+}
+
+/* ----------------------------------------------------
+   PAGINATION
+   ---------------------------------------------------- */
+/* `div#paginator`, not `#paginator`: default.css / desktop.css set
+   `display: block` with that same specificity. */
+div#paginator {
+  @include sticky-paginator.bar(0px);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  /* Most pages wrap the links in a `.pagination` div. Flattening lets the
+     links become flex items here so they pick up the gap. */
+  .pagination {
+    display: contents;
+  }
+
+  /* Square pills; longer labels ("Next »", ">>") grow from that floor. */
+  a,
+  b,
+  span.current {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box;
+    height: 40px;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    margin: 0 !important;
+    color: var(--grey2) !important;
+    font-weight: 600;
+    background-color: var(--bg2);
+    border: none !important;
+    border-radius: 10px;
+    transition:
+      color 180ms ease,
+      background-color 180ms ease;
+  }
+
+  a {
+    &:hover,
+    &:focus-visible {
+      color: var(--blue) !important;
+      background-color: var(--bg3) !important;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+  }
+
+  b,
+  span.current {
+    color: var(--bg_dim) !important;
+    background-color: var(--blue) !important;
+  }
+
+  /* Gap markers ("...") between page ranges: text only, no pill. */
+  span:not(.current) {
+    margin: 0 !important;
+    padding: 0 0.2rem !important;
+    color: var(--grey0) !important;
+    font-weight: 600;
+  }
+
+  /* Rule34-only jump-to-page control beside the links. */
+  .manual-page-chooser {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+
+    /* desktop.css paints this field rgb(150,200,130); beat that selector. */
+    input[type="text"] {
+      box-sizing: border-box;
+      width: 4.5em !important;
+      height: 40px;
+      margin: 0;
+      padding: 0 0.6rem !important;
+      color: var(--fg) !important;
+      background-color: var(--bg1) !important;
+      border: solid 1px var(--bg3) !important;
+      border-radius: 10px;
+
+      &::placeholder {
+        color: var(--grey0) !important;
+        opacity: 1;
+      }
+
+      &:focus {
+        color: var(--fg) !important;
+        background-color: var(--bg1) !important;
+        border-color: var(--blue) !important;
+      }
+    }
+
+    input[type="submit"] {
+      box-sizing: border-box;
+      height: 40px;
+      margin: 0;
+      padding: 0 0.85rem !important;
+      color: var(--grey2) !important;
+      font-weight: 600;
+      background-color: var(--bg2) !important;
+      border: none !important;
+      border-radius: 10px;
+      cursor: pointer;
+      transition:
+        color 180ms ease,
+        background-color 180ms ease;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--blue) !important;
+        background-color: var(--bg3) !important;
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--blue);
+        outline-offset: 2px;
+      }
+    }
+  }
+}
+
+/* ----------------------------------------------------
+   TABLES
+   ---------------------------------------------------- */
+table {
+  border-collapse: collapse;
+}
+
+th {
+  background: var(--blue) !important;
+  color: var(--bg_dim) !important;
+  border: 1px solid var(--bg_dim);
+  border-radius: 10px;
+}
+
+tr.tableheader,
+tr.tableheader th,
+table.highlightable thead tr,
+table.highlightable thead th {
+  background: var(--blue) !important;
+  background-image: none !important;
+  color: var(--bg_dim) !important;
+}
+
+tr[style*="006ffa"],
+tr[style*="006FFA"] {
+  background: var(--blue) !important;
+
+  th,
+  td {
+    color: var(--bg_dim) !important;
+  }
+}
+
+table.form {
+  th,
+  td {
+    border: none !important;
+    background: transparent !important;
+    color: var(--fg) !important;
+    text-align: left !important;
+    font-weight: normal;
+  }
+
+  p {
+    margin: 0;
+    color: var(--grey1);
+    font-size: 0.8em;
+    font-weight: normal;
+    line-height: 1.45;
+  }
+}
+
+@include highlightable-table.shell;
+
+table.highlightable {
+  th + th,
+  td + td {
+    border-left: 1px solid var(--bg2) !important;
+  }
+
+  th {
+    border: none !important;
+    border-bottom: 1px solid var(--bg2) !important;
+    border-radius: 0;
+  }
+
+  > tbody > tr:hover {
+    background: var(--bg2) !important;
+  }
+
+  tr.rejected-tag {
+    background: color-mix(in srgb, var(--red) 16%, var(--bg_dim)) !important;
+  }
+
+  tr.pending-tag {
+    background: color-mix(in srgb, var(--blue) 16%, var(--bg_dim)) !important;
   }
 }

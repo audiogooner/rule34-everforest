@@ -1,3 +1,246 @@
+@use "sticky-paginator";
+
 /* ----------------------------------------------------
-   FORUM LIST
+   FORUM LIST (search results + thread groups)
+   Rule34 nests table.grouping inside table.highlightable
+   rows; gelbooru uses a flat table — patterns only.
    ---------------------------------------------------- */
+
+/* New topic toggle — Help is already green in base.scss */
+#header #subnavbar > li > a[href="#"] {
+  color: var(--green) !important;
+}
+
+div#forum {
+  font-size: 14px;
+
+  > br {
+    display: none;
+  }
+}
+
+/* ----- Forum search ----- */
+
+div#forum div#search {
+  margin: 0 0 1rem !important;
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+    max-width: 36rem;
+  }
+
+  input[type="text"] {
+    flex: 1 1 12rem;
+    min-width: 0;
+    box-sizing: border-box;
+    width: auto !important;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  input[type="submit"] {
+    flex: 0 0 auto;
+    width: auto !important;
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+}
+
+/* ----- Search result groups (nested grouping tables) ----- */
+
+div#forum > table.highlightable {
+  width: 100% !important;
+
+  > tbody > tr.odd,
+  > tbody > tr.even {
+    background: transparent !important;
+  }
+
+  > tbody > tr:hover {
+    background: transparent !important;
+  }
+
+  > tbody > tr > td {
+    padding: 0 !important;
+    vertical-align: top;
+  }
+
+  table.grouping {
+    width: 100% !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+
+    thead tr.tableheader th {
+      padding: 0.55rem 0.75rem !important;
+      text-align: left !important;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+
+    tbody td {
+      padding: 0.65rem 0.75rem !important;
+      vertical-align: top;
+      text-align: left !important;
+      color: var(--fg) !important;
+      background: transparent !important;
+      border: none !important;
+      border-bottom: 1px solid var(--bg2) !important;
+    }
+
+    th + th,
+    td + td {
+      border-left: 1px solid var(--bg2) !important;
+    }
+
+    tbody tr:last-child > td {
+      border-bottom: none !important;
+    }
+
+    tbody tr:hover {
+      background: var(--bg2) !important;
+    }
+
+    tbody td:first-child {
+      word-break: break-word;
+
+      > a {
+        font-weight: 600;
+      }
+
+      > a[href*="#"] {
+        font-weight: 500;
+      }
+    }
+
+    tbody td:nth-child(2) {
+      color: var(--grey1) !important;
+      font-size: 0.92em;
+    }
+
+    tbody td:nth-child(3) {
+      color: var(--grey1) !important;
+      font-size: 0.92em;
+      line-height: 1.45;
+    }
+  }
+
+  .forum-match-meta {
+    margin-top: 0.35rem;
+    color: var(--grey1);
+    font-size: 0.85em;
+    line-height: 1.4;
+
+    span {
+      color: var(--grey0);
+    }
+  }
+
+  div.quote {
+    margin: 0.5rem 0;
+    padding: 0.65rem 0.85rem;
+    color: var(--grey1);
+    font-size: 0.9em;
+    font-style: italic;
+    line-height: 1.45;
+    text-align: left;
+    background: var(--bg1);
+    border: 1px solid var(--bg2) !important;
+    border-radius: 7px;
+
+    a {
+      color: var(--blue) !important;
+      word-break: break-all;
+    }
+  }
+}
+
+/* ----- New topic compose (toggled from subnavbar) ----- */
+
+form#new_topic {
+  margin: 0 0 1.25rem;
+  text-align: left !important;
+
+  > table {
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 36rem;
+    padding: 1rem 1.15rem;
+    background: var(--bg1);
+    border-radius: 10px;
+
+    td {
+      border: none !important;
+      background: transparent !important;
+      color: var(--fg) !important;
+      padding: 0.35rem 0;
+      vertical-align: top;
+    }
+  }
+
+  input#topic,
+  textarea[name="post"] {
+    box-sizing: border-box;
+    width: 100% !important;
+    margin-top: 0.35rem;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  textarea[name="post"] {
+    min-height: 8rem;
+    resize: vertical;
+  }
+
+  input[type="submit"] {
+    margin-top: 0.5rem;
+    width: auto !important;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+}
+
+div#paginator {
+  @include sticky-paginator.compact;
+}
+
+@media only screen and (max-width: 850px) {
+  div#forum > table.highlightable table.grouping {
+    thead th:nth-child(2),
+    tbody td:nth-child(2) {
+      display: none !important;
+    }
+
+    th + th,
+    td + td {
+      border-left: none !important;
+    }
+
+    thead th:nth-child(3),
+    tbody td:nth-child(3) {
+      border-left: none !important;
+    }
+  }
+}

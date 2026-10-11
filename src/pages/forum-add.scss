@@ -1,3 +1,148 @@
 /* ----------------------------------------------------
-   FORUM ADD
+   FORUM ADD (new topic route + POST result)
+   Snapshot forum-add.html only captured a captcha error
+   in #content; compose markup from forum-list form#new_topic.
+   Gelbooru forum-add uses body > form — Rule34 wraps #content.
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href="#"] {
+  color: var(--green) !important;
+  font-weight: 600;
+}
+
+div#content {
+  box-sizing: border-box;
+  padding: 1.25rem 20px 2rem !important;
+  text-align: left !important;
+  color: var(--fg);
+  line-height: 1.55;
+
+  @media only screen and (min-width: 851px) {
+    padding-left: 60px !important;
+  }
+
+  > br {
+    display: none;
+  }
+
+  /* POST failure text (snapshot: div[style*="40em"]) */
+  > div:not([id]):not([class]) {
+    box-sizing: border-box;
+    max-width: 40em;
+    margin: 0 0 1rem;
+    padding: 0.75rem 1rem;
+    color: var(--red) !important;
+    font-weight: 600;
+    line-height: 1.45;
+    background: var(--bg1);
+    border: 1px solid var(--red) !important;
+    border-radius: 10px;
+  }
+
+  > form#new_topic,
+  > form[action*="page=forum"][action*="s=add"] {
+    display: block;
+    margin: 0;
+    max-width: 36rem;
+    text-align: left !important;
+
+    > table {
+      box-sizing: border-box;
+      width: 100% !important;
+      max-width: 36rem;
+      padding: 1rem 1.15rem;
+      border-collapse: collapse;
+      background: var(--bg1);
+      border-radius: 10px;
+
+      td {
+        border: none !important;
+        background: transparent !important;
+        color: var(--grey1) !important;
+        padding: 0.35rem 0 0.75rem;
+        text-align: left !important;
+        vertical-align: top;
+        font-weight: 600;
+
+        > br {
+          display: none;
+        }
+      }
+
+      tr:has(.cf-turnstile) > td {
+        padding-top: 0.15rem;
+      }
+
+      tr:has(input[type="submit"]) > td {
+        padding-bottom: 0;
+      }
+
+      input[type="text"],
+      textarea {
+        display: block;
+        box-sizing: border-box;
+        width: 100% !important;
+        margin: 0.35rem 0 0;
+        padding: 0.55rem 0.75rem !important;
+        font-weight: normal;
+        color: var(--fg) !important;
+      }
+
+      textarea {
+        min-height: 10rem;
+        resize: vertical;
+      }
+
+      input[type="submit"] {
+        margin-top: 0.25rem;
+        width: auto !important;
+        padding: 0.55rem 1.25rem !important;
+        color: var(--bg_dim) !important;
+        font-weight: 600;
+        background: var(--blue) !important;
+        border: none !important;
+        border-radius: 7px !important;
+        cursor: pointer;
+
+        &:hover {
+          background: var(--aqua) !important;
+        }
+      }
+    }
+  }
+
+  > form#new_topic input#topic,
+  > form#new_topic textarea[name="post"],
+  > form[action*="page=forum"][action*="s=add"]:not([action*="t=post"]) input#topic,
+  > form[action*="page=forum"][action*="s=add"]:not([action*="t=post"]) textarea[name="post"] {
+    width: 100% !important;
+  }
+
+  > form[action*="page=forum"][action*="s=add"][action*="t=post"] {
+    #reply_box,
+    textarea[name="post"],
+    input[name="title"] {
+      width: 100% !important;
+    }
+
+    #reply_box,
+    textarea[name="post"] {
+      min-height: 12rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  div#content {
+    padding: 0.75rem 1rem 1.5rem !important;
+
+    > form#new_topic,
+    > form[action*="page=forum"][action*="s=add"] {
+      max-width: none;
+
+      > table {
+        max-width: none;
+      }
+    }
+  }
+}

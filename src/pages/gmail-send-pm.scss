@@ -1,3 +1,266 @@
 /* ----------------------------------------------------
-   GMAIL SEND PM
+   GMAIL SEND PM — compose (#compose_pm)
+   Rule34 PM compose at page=gmail&s=send_pm. Gelbooru
+   conversation-create field/button patterns; DOM from
+   snapshots (no #pminbox / messages chrome).
    ---------------------------------------------------- */
+
+#header #navbar a[href*="page=account"] {
+  color: var(--blue) !important;
+}
+
+div#content {
+  box-sizing: border-box;
+  padding: 0 1.25rem 2rem;
+  color: var(--fg);
+  line-height: 1.55;
+
+  > br {
+    display: none;
+  }
+
+  > div {
+    max-width: 56rem;
+
+    > br {
+      display: none;
+    }
+
+    > h4 {
+      margin: 0 0 1rem;
+      color: var(--blue) !important;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    div.mailhint {
+      box-sizing: border-box;
+      margin: 0 0 0.75rem;
+      padding: 0.85rem 1rem !important;
+      font-weight: 500;
+      line-height: 1.45;
+      background: var(--bg0) !important;
+      border: 1px solid var(--bg2);
+      border-radius: 10px;
+
+      br {
+        display: none;
+      }
+
+      a {
+        color: var(--blue) !important;
+        font-weight: 600;
+
+        &:hover {
+          color: var(--aqua) !important;
+        }
+      }
+
+      & + div.mailhint {
+        margin-bottom: 1rem;
+        padding: 0.65rem 1rem !important;
+        color: var(--grey1) !important;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: center;
+        background: var(--bg1) !important;
+        border-color: var(--bg2);
+      }
+    }
+
+    div.mailhint:first-of-type {
+      color: var(--fg) !important;
+      font-weight: 500;
+      background: var(--bg1) !important;
+      border-color: var(--orange) !important;
+    }
+
+    form#compose_pm {
+      width: 100% !important;
+      max-width: 42rem;
+      margin: 0;
+
+      div.mailheader {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 0.45rem 1rem;
+        align-items: center;
+        margin: 0 0 0.85rem;
+
+        label {
+          margin: 0;
+          color: var(--grey1) !important;
+          font-size: 0.92rem;
+          font-weight: 600;
+          white-space: nowrap;
+        }
+
+        input[type="text"] {
+          box-sizing: border-box;
+          width: 100% !important;
+          margin: 0;
+          padding: 0.55rem 0.75rem !important;
+          font-weight: normal;
+        }
+      }
+
+      div.mailbody {
+        box-sizing: border-box;
+        margin: 0 0 1rem !important;
+        padding: 1rem 1.15rem !important;
+        background: var(--bg1) !important;
+        border: 1px solid var(--bg2) !important;
+        border-radius: 10px;
+
+        > br {
+          display: none;
+        }
+
+        textarea#txtBody {
+          display: block;
+          box-sizing: border-box;
+          width: 100% !important;
+          max-width: 100%;
+          min-height: 12rem;
+          margin: 0 0 0.85rem;
+          padding: 0.55rem 0.75rem !important;
+          resize: vertical;
+          font-weight: normal;
+          line-height: 1.45;
+        }
+
+        div#bodyNotice.notice {
+          box-sizing: border-box;
+          margin: 0 0 0.85rem !important;
+          padding: 0.65rem 1rem !important;
+          color: var(--bg_dim) !important;
+          font-weight: 600;
+          background: var(--red) !important;
+          border: none !important;
+          border-radius: 10px;
+        }
+
+        input#preview {
+          margin: 0 0.35rem 0 0;
+          accent-color: var(--blue);
+          vertical-align: middle;
+        }
+
+        label[for="preview"] {
+          color: var(--grey1) !important;
+          font-weight: 500;
+          vertical-align: middle;
+        }
+
+        .cf-turnstile {
+          margin: 0.85rem 0 0;
+        }
+      }
+
+      > table {
+        width: 100% !important;
+        max-width: 42rem;
+        border: none !important;
+        border-collapse: collapse;
+
+        td {
+          padding: 0 !important;
+          background: transparent !important;
+          border: none !important;
+        }
+
+        td[style*="47px"] {
+          display: none;
+        }
+
+        td.mailfooter {
+          padding: 0.25rem 0 0 !important;
+        }
+      }
+
+      div.mailbuttons {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem 0.75rem;
+        padding: 0.65rem 1rem;
+        color: var(--grey1) !important;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: center;
+        background: var(--bg0);
+        border: 1px solid var(--bg2);
+        border-radius: 10px;
+
+        a {
+          text-decoration: none !important;
+        }
+
+        a[href^="javascript"] {
+          display: inline-block;
+          padding: 0.5rem 1.15rem;
+          color: var(--bg_dim) !important;
+          font-weight: 600;
+          background: var(--blue) !important;
+          border-radius: 7px;
+
+          &:hover {
+            background: var(--aqua) !important;
+          }
+        }
+
+        a[href*="page=gmail"] {
+          color: var(--blue) !important;
+
+          &:hover {
+            color: var(--aqua) !important;
+          }
+        }
+      }
+    }
+
+    > div[style*="text-align: center"] {
+      margin: 1.5rem 0 0;
+      color: var(--grey1) !important;
+      font-size: 0.85rem;
+
+      a {
+        color: var(--grey0) !important;
+        font-weight: 500;
+
+        &:hover {
+          color: var(--blue) !important;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  div#content {
+    padding: 0.75rem 1rem 1.5rem;
+
+    > div form#compose_pm {
+      max-width: none;
+
+      div.mailheader {
+        grid-template-columns: 1fr;
+
+        label {
+          margin-top: 0.35rem;
+
+          &:first-of-type {
+            margin-top: 0;
+          }
+        }
+      }
+
+      > table,
+      div.mailbody {
+        max-width: none;
+      }
+    }
+  }
+}

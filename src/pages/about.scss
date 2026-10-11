@@ -1,3 +1,51 @@
 /* ----------------------------------------------------
    ABOUT
+   Static prose in #content > div.content > table (600px
+   layout table). Gelbooru aboutus prose patterns; no
+   subnavbar on this URL (see snapshot).
    ---------------------------------------------------- */
+
+div#content {
+  box-sizing: border-box;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 2.5rem;
+
+  > div.content {
+    > br {
+      display: none;
+    }
+
+    > table {
+      width: 100% !important;
+      max-width: 42rem;
+      margin: 0;
+      table-layout: fixed;
+      background: var(--bg0);
+      border: 1px solid var(--bg2);
+      border-radius: 10px;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+
+      td {
+        padding: 1.25rem 1.35rem !important;
+        color: var(--grey1);
+        font-family: var(--font-sans);
+        font-size: 0.92rem;
+        line-height: 1.65;
+        vertical-align: top;
+
+        br {
+          display: block;
+          margin-bottom: 0.85rem;
+          content: "";
+        }
+
+        br:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

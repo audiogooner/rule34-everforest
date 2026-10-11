@@ -92,7 +92,10 @@ html
           div.tag-search
             h5
             form
-              input
+              div.awesomplete
+                input
+                ul
+                span.visually-hidden
               br
               input
             small
@@ -130,20 +133,14 @@ html
                 a
                 a
                 span.tag-count
+              li.tag-type-copyright
+                a
+                a
+                a
+                a
+                span.tag-count
               li
                 h6
-              li.tag-type-character
-                a
-                a
-                a
-                a
-                span.tag-count
-              li.tag-type-character
-                a
-                a
-                a
-                a
-                span.tag-count
               li.tag-type-character
                 a
                 a
@@ -186,30 +183,6 @@ html
                 span.tag-count
               li
                 h6
-              li.tag-type-metadata
-                a
-                a
-                a
-                a
-                span.tag-count
-              li.tag-type-metadata
-                a
-                a
-                a
-                a
-                span.tag-count
-              li.tag-type-metadata
-                a
-                a
-                a
-                a
-                span.tag-count
-              li.tag-type-metadata
-                a
-                a
-                a
-                a
-                span.tag-count
               li.tag-type-metadata
                 a
                 a
@@ -220,18 +193,19 @@ html
         div.content
           span
             div
-              ins.eas6a97888e38
+              a
+                img
               br
               br
           div.image-list
-            span#s19004009.thumb
-              a#p19004009
+            span#s19015790.thumb
+              a#p19015790
                 img.preview
-            span#s19004008.thumb
-              a#p19004008
+            span#s19015770.thumb
+              a#p19015770
                 img.preview
-            span#s19004007.thumb
-              a#p19004007
+            span#s19005998.thumb
+              a#p19005998
                 img.preview
           br
           br
@@ -258,8 +232,7 @@ html
           div.horizontalFlexWithMargins
         span
           div.postListSidebarRight
-            a
-              img
+            ins.eas6a97888e20
     script
     div
       p

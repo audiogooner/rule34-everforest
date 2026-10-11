@@ -1,3 +1,329 @@
 /* ----------------------------------------------------
    POOL IMPORT
+   Tag search + AJAX result grid (#posts) before bulk
+   import (Rule34: #content / #query / #posts forms).
+   Submenu matches pool-show; thumbs follow post-list.
    ---------------------------------------------------- */
+
+#header #subnavbar {
+  /* List / New / Help | View · Edit · Delete · Order · Import · History */
+  > li:has(> a[href*="s=edit"]),
+  > li:has(> a[href*="s=edit"]) ~ li {
+    background: var(--bg1);
+
+    > a {
+      margin: 0.45rem 0.75rem !important;
+    }
+  }
+
+  > li:has(> a[href*="s=edit"]) {
+    margin-left: auto;
+    border-radius: 7px 0 0 7px;
+  }
+
+  > li:has(> a[href*="s=edit"]) ~ li:last-child {
+    border-radius: 0 7px 7px 0;
+  }
+
+  > li:has(> a[href*="s=edit"]) + li > a {
+    color: var(--red) !important;
+  }
+
+  > li > a[href*="page=pool"][href*="s=import"] {
+    color: var(--blue) !important;
+    font-weight: 600;
+  }
+}
+
+#content {
+  color: var(--fg);
+  line-height: 1.55;
+
+  > br {
+    display: none;
+  }
+
+  > h4 {
+    margin: 1rem 0 0.65rem;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.25;
+    color: var(--fg);
+  }
+
+  > p {
+    margin: 0 0 1rem;
+    max-width: 42em;
+    color: var(--grey1);
+  }
+
+  > div[style*="text-align: center"] {
+    margin-top: 1.5rem !important;
+    color: var(--grey1) !important;
+    font-size: 0.85em !important;
+
+    a {
+      color: var(--grey1) !important;
+
+      &:hover {
+        color: var(--fg) !important;
+      }
+    }
+  }
+}
+
+/* ----- Tag search (posts to import-js) ----- */
+
+#content > div:has(> form[action*="import-js"]) {
+  margin: 0 0 1.25rem !important;
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    max-width: 42rem;
+  }
+
+  #query {
+    flex: 1 1 18rem;
+    min-width: 0;
+    box-sizing: border-box;
+    width: auto !important;
+    max-width: 32rem;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  input[type="submit"] {
+    flex: 0 0 auto;
+    width: auto !important;
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+}
+
+/* ----- Import form + captcha footer ----- */
+
+#content form:has(#posts) {
+  max-width: 100%;
+
+  #posts {
+    margin: 0 0 1.25rem;
+    min-height: 0;
+
+    > p,
+    > div > p {
+      margin: 0 0 0.85rem;
+      color: var(--grey1);
+      max-width: 42em;
+    }
+
+    input[type="checkbox"] {
+      margin: 0 0.35rem 0 0;
+      accent-color: var(--blue);
+      vertical-align: middle;
+    }
+
+    label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin: 0 0 0.65rem;
+      color: var(--fg);
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+
+  > div[style*="clear"] {
+    clear: both !important;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem 0.85rem;
+    max-width: 42rem;
+    margin: 0;
+    padding: 0.85rem 0 0;
+    border-top: 1px solid var(--bg2);
+
+    > div {
+      flex: 1 1 100%;
+      margin: 0 0 0.25rem;
+    }
+
+    .cf-turnstile {
+      margin: 0.25rem 0;
+    }
+  }
+
+  input[name="commit"][type="submit"] {
+    width: auto !important;
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+
+  input[type="button"] {
+    width: auto !important;
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--fg) !important;
+    font-weight: 600;
+    background: var(--bg2) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--bg3) !important;
+    }
+  }
+}
+
+/* ----- Search results (AJAX into #posts; markup mirrors post list) ----- */
+
+#content #posts div.image-list {
+  --thumb-min: clamp(8.5rem, 6.5rem + 8vw, 15.625rem);
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--thumb-min)), 1fr));
+  gap: 0.8rem;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.35rem !important;
+  padding-top: 0.35rem;
+}
+
+#content #posts span.thumb {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-width: 0;
+
+  > a {
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    pointer-events: none;
+  }
+
+  img.preview,
+  video,
+  img {
+    display: block;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: fill;
+    pointer-events: auto;
+    border: none !important;
+    border-radius: 7px;
+    box-shadow:
+      0 0 0 0 transparent,
+      0 0 0 0 transparent,
+      0 2px 10px color-mix(in srgb, var(--bg_dim) 55%, transparent);
+    transition: box-shadow 300ms cubic-bezier(0.2, 0.75, 0.25, 1);
+
+    &:hover {
+      box-shadow:
+        0 0 0 3px color-mix(in srgb, var(--bg2) 72%, transparent),
+        0 0 0 5px color-mix(in srgb, var(--blue) 88%, transparent),
+        0 7px 22px color-mix(in srgb, var(--blue) 26%, transparent);
+    }
+
+    &[title~="animated"]:not([title~="video"]):not(.webm-thumb),
+    &[alt~="animated"]:not([alt~="video"]):not(.webm-thumb) {
+      outline: 3px solid var(--blue);
+      outline-offset: -3px;
+    }
+
+    &[title~="video"],
+    &[alt~="video"],
+    &.webm-thumb {
+      outline: none;
+      box-shadow:
+        0 0 0 0 transparent,
+        0 0 0 2px color-mix(in srgb, var(--red) 88%, transparent),
+        0 2px 10px color-mix(in srgb, var(--bg_dim) 55%, transparent);
+
+      &:hover {
+        box-shadow:
+          0 0 0 3px color-mix(in srgb, var(--red) 28%, var(--bg1)),
+          0 0 0 5px color-mix(in srgb, var(--red) 88%, transparent),
+          0 7px 22px color-mix(in srgb, var(--red) 26%, transparent);
+      }
+    }
+  }
+}
+
+#content #posts span.thumb > a:has(> img.webm-thumb),
+#content #posts span.thumb > a:has(> img[title~="video"]),
+#content #posts span.thumb > a:has(> img[alt~="video"]) {
+  position: relative;
+
+  &::after {
+    content: "▶";
+    display: grid;
+    place-items: center;
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 24px;
+    height: 24px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    color: var(--fg);
+    font-size: 11px;
+    line-height: 1;
+    padding-left: 2px;
+    background: color-mix(in srgb, var(--bg_dim) 70%, transparent);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--bg_dim) 28%, transparent);
+    transition: opacity 220ms ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #content #posts span.thumb img.preview,
+  #content #posts span.thumb video,
+  #content #posts span.thumb img {
+    transition: none;
+  }
+
+  #content #posts span.thumb > a:has(> img.webm-thumb)::after,
+  #content #posts span.thumb > a:has(> img[title~="video"])::after,
+  #content #posts span.thumb > a:has(> img[alt~="video"])::after {
+    transition: none;
+  }
+}

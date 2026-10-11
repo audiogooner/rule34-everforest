@@ -1,3 +1,170 @@
 /* ----------------------------------------------------
-   HISTORY — TAGS
+   HISTORY — tag history for a single post
+   Rule34 DOM: #content > table#history.highlightable
+   (gelbooru history.scss patterns; no .padding15 / .rotate_list)
    ---------------------------------------------------- */
+
+div#content {
+  box-sizing: border-box;
+  padding: 0 1rem 2rem;
+
+  > br {
+    display: none;
+  }
+}
+
+table#history.highlightable {
+  width: 100% !important;
+  color: var(--fg) !important;
+  font-size: 12px;
+
+  th,
+  td {
+    padding: 0.65rem 0.85rem !important;
+    vertical-align: top;
+  }
+
+  /* Rating strip column (header + body) */
+  > tbody > tr > th:first-child:empty,
+  > tbody > tr[id] > td:first-child {
+    width: 0.45rem;
+    min-width: 0.45rem;
+    max-width: 0.45rem;
+    padding: 0 !important;
+    border-left: none !important;
+  }
+
+  > tbody > tr[id] > td:first-child {
+    border-right: none !important;
+  }
+
+  /* Data rows: zebra + hover (header row stays global blue) */
+  > tbody > tr[id] {
+    background: var(--bg_dim) !important;
+
+    &:nth-child(even) {
+      background: var(--bg0) !important;
+    }
+
+    &:hover {
+      background: var(--bg1) !important;
+    }
+
+    &:last-child > td {
+      border-bottom: none !important;
+    }
+  }
+
+  /* Inline rating backgrounds on the strip cell */
+  > tbody > tr[id] > td:first-child[style*="1, 6, 243"],
+  > tbody > tr[id] > td:first-child[style*="1,6,243"] {
+    background: var(--blue) !important;
+  }
+
+  > tbody > tr[id] > td:first-child[style*="20, 143, 4"],
+  > tbody > tr[id] > td:first-child[style*="20,143,4"] {
+    background: var(--green) !important;
+  }
+
+  > tbody > tr[id] > td:first-child[style*="137, 132, 4"],
+  > tbody > tr[id] > td:first-child[style*="137,132,4"] {
+    background: var(--yellow) !important;
+  }
+
+  > tbody > tr[id] > td:first-child[style*="243, 6, 1"],
+  > tbody > tr[id] > td:first-child[style*="243,6,1"] {
+    background: var(--red) !important;
+  }
+
+  /* Post id, user profile, revert */
+  a {
+    color: var(--blue) !important;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--aqua) !important;
+      text-decoration: underline;
+    }
+  }
+
+  td:nth-child(6) {
+    word-break: break-word;
+  }
+
+  td:last-child a[href="#"] {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Tag diff blocks (override table-wide link color for semantics) */
+  .unchanged-tags,
+  .added-tags,
+  .removed-tags {
+    display: inline;
+    margin-right: 0.35em;
+    line-height: 1.65;
+  }
+
+  .unchanged-tags {
+    font-size: 0.85em;
+  }
+
+  .added-tags {
+    font-size: 0.9em;
+    font-weight: 600;
+
+    .tag-type-general > a,
+    .tag-type-artist > a,
+    .tag-type-character > a,
+    .tag-type-copyright > a,
+    .tag-type-metadata > a,
+    > a {
+      color: var(--green) !important;
+    }
+
+    span[style*="color"] {
+      color: var(--green) !important;
+    }
+  }
+
+  .removed-tags {
+    font-size: 0.9em;
+    font-weight: 600;
+
+    .tag-type-general > a,
+    .tag-type-artist > a,
+    .tag-type-character > a,
+    .tag-type-copyright > a,
+    .tag-type-metadata > a,
+    > a {
+      color: var(--red) !important;
+    }
+
+    span[style*="color"] {
+      color: var(--red) !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  div#content {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  table#history.highlightable {
+    th + th,
+    td + td {
+      border-left: none !important;
+    }
+
+    th,
+    td {
+      padding: 0.5rem 0.55rem !important;
+    }
+
+    > tbody > tr[id] > td:first-child {
+      padding: 0 !important;
+    }
+  }
+}

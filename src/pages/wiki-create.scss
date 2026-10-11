@@ -1,3 +1,186 @@
 /* ----------------------------------------------------
    WIKI CREATE
+   Form + formatting help panel (gelbooru wiki-create layout;
+   Rule34 #post-list / nested sidebar DOM from snapshot).
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href*="page=wiki"][href*="s=create"] {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+/* ----- Two-column shell: form left, help panel right ----- */
+
+#content {
+  padding: 1.25rem 1.25rem 2rem !important;
+  text-align: left;
+
+  > #post-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+#content > #post-list > div.content {
+  float: none !important;
+  width: auto !important;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0 !important;
+}
+
+#content > #post-list > #post-list {
+  order: 2;
+  min-width: 0;
+}
+
+div.sidebar {
+  float: none !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  font-size: 12px;
+
+  > div {
+    padding: 1.35rem 1.6rem 1.5rem !important;
+    color: var(--grey1);
+    line-height: 1.55;
+    background: var(--bg0);
+    border: 1px solid var(--bg1);
+    border-radius: 10px;
+  }
+
+  span > b {
+    color: var(--fg);
+    font-size: 1.05em;
+  }
+
+  span {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  a {
+    color: var(--blue) !important;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--aqua) !important;
+    }
+  }
+}
+
+/* ----- Create form ----- */
+
+div.content > div[style*="width"] {
+  width: auto !important;
+}
+
+div.content div[style*="464646"] {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--fg) !important;
+  font-size: 12px !important;
+  line-height: 1.55;
+}
+
+div.content h3 {
+  display: block;
+  margin: 0 0 0.75rem;
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+div.content center {
+  display: block;
+  margin-top: 1.25rem;
+  text-align: left;
+}
+
+div.content br {
+  display: none;
+}
+
+div.content form {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  color: var(--grey0);
+
+  input,
+  textarea {
+    box-sizing: border-box;
+  }
+
+  input[name="title"] {
+    width: 100% !important;
+    padding: 0.55rem 0.9rem !important;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 12px;
+
+    &:disabled {
+      color: var(--grey1);
+      background: var(--bg1) !important;
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+  }
+
+  textarea[name="body"] {
+    width: 100% !important;
+    min-height: 24rem;
+    padding: 0.75rem 0.9rem !important;
+    margin-bottom: 1rem;
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    line-height: 1.55;
+    resize: vertical;
+  }
+
+  .cf-turnstile {
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  input[type="submit"] {
+    justify-self: start;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+
+  &:has(input[name="title"]:disabled) input[type="submit"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  #content > #post-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #content > #post-list > #post-list {
+    order: 0;
+  }
+
+  div.content form textarea[name="body"] {
+    min-height: 18rem;
+  }
+}

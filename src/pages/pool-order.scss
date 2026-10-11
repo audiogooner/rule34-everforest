@@ -1,3 +1,212 @@
 /* ----------------------------------------------------
    POOL ORDER
+   Reorder posts in a pool (form table + thumb previews).
+   Rule34: #content > form > table (no highlightable class).
    ---------------------------------------------------- */
+
+#header #subnavbar {
+  /* List / New / Help | View · Edit · Delete · Order · Import · History */
+  > li > a[href*="page=pool"][href*="s=order"] {
+    color: var(--blue) !important;
+    font-weight: 600;
+  }
+
+  > li:has(> a[href*="s=edit"]),
+  > li:has(> a[href*="s=edit"]) ~ li {
+    background: var(--bg1);
+
+    > a {
+      margin: 0.45rem 0.75rem !important;
+    }
+  }
+
+  > li:has(> a[href*="s=edit"]) {
+    margin-left: auto;
+    border-radius: 7px 0 0 7px;
+  }
+
+  > li:has(> a[href*="s=edit"]) ~ li:last-child {
+    border-radius: 0 7px 7px 0;
+  }
+
+  > li:has(> a[href*="s=edit"]) + li > a {
+    color: var(--red) !important;
+  }
+}
+
+#content {
+  box-sizing: border-box;
+  padding: 0 1.25rem 2rem;
+  color: var(--fg);
+  line-height: 1.55;
+
+  > br {
+    display: none;
+  }
+
+  > h3 {
+    margin: 0 0 0.45rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--fg);
+  }
+
+  > p {
+    margin: 0 0 1.15rem;
+    max-width: 42em;
+    color: var(--grey1);
+    font-size: 0.95em;
+  }
+
+  > form > table {
+    width: 100% !important;
+    max-width: 36rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--bg2);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg0);
+
+    thead tr {
+      background: var(--blue) !important;
+    }
+
+    thead th {
+      padding: 0.55rem 0.75rem !important;
+      text-align: left !important;
+      font-weight: 600;
+      white-space: nowrap;
+      border: none !important;
+      border-bottom: 1px solid var(--bg2) !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      color: var(--bg_dim) !important;
+
+      + th {
+        border-left: 1px solid color-mix(in srgb, var(--bg_dim) 22%, transparent) !important;
+      }
+    }
+
+    thead th:first-child {
+      width: 7.5rem;
+      min-width: 7.5rem;
+    }
+
+    thead th:last-child {
+      width: 6rem;
+    }
+
+    tbody tr {
+      background: var(--bg0) !important;
+
+      &:hover {
+        background: var(--bg2) !important;
+      }
+    }
+
+    tbody td {
+      padding: 0.45rem 0.65rem !important;
+      vertical-align: middle;
+      text-align: left !important;
+      color: var(--fg) !important;
+      border: none !important;
+      border-bottom: 1px solid var(--bg2) !important;
+      background: transparent !important;
+
+      + td {
+        border-left: 1px solid var(--bg2) !important;
+      }
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none !important;
+    }
+
+    tbody td:first-child {
+      text-align: center !important;
+      line-height: 0;
+
+      > a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        border-radius: 7px;
+        overflow: hidden;
+        line-height: 0;
+        transition: box-shadow 220ms ease;
+      }
+
+      img {
+        display: block;
+        width: auto !important;
+        height: auto !important;
+        max-width: 6.5rem;
+        max-height: 6.5rem;
+        object-fit: contain;
+        border: none !important;
+        border-radius: 7px;
+        box-shadow: 0 2px 8px color-mix(in srgb, var(--bg_dim) 40%, transparent);
+      }
+
+      > a:hover img {
+        box-shadow:
+          0 0 0 2px color-mix(in srgb, var(--blue) 75%, transparent),
+          0 4px 14px color-mix(in srgb, var(--blue) 22%, transparent);
+      }
+    }
+
+    tbody td:last-child {
+      text-align: center !important;
+    }
+
+    input.pp {
+      box-sizing: border-box;
+      width: 4.25rem !important;
+      margin: 0;
+      padding: 0.35rem 0.45rem !important;
+      text-align: center;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    tfoot tr {
+      background: var(--bg1) !important;
+    }
+
+    tfoot td {
+      padding: 0.75rem 0.85rem !important;
+      border: none !important;
+      border-top: 1px solid var(--bg2) !important;
+      background: transparent !important;
+      text-align: left !important;
+    }
+
+    tfoot input[type="submit"] {
+      margin-right: 0.35rem;
+      padding: 0.55rem 1.25rem !important;
+      color: var(--bg_dim) !important;
+      font-weight: 600;
+      background: var(--blue) !important;
+      border: none !important;
+      border-radius: 7px !important;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--aqua) !important;
+      }
+    }
+
+    tfoot input[type="button"] + input[type="button"] {
+      margin-left: 0.35rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #content > form > table tbody td:first-child > a {
+    transition: none;
+  }
+}

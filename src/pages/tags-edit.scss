@@ -1,3 +1,143 @@
 /* ----------------------------------------------------
    TAGS EDIT
+   Edit-tag form grid (gelbooru tags-edit pattern,
+   Rule34 DOM: #tag_name, type select, #tag_is_ambiguous).
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href*="page=tags"][href*="s=edit"] {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+#content {
+  > br {
+    display: none;
+  }
+}
+
+#content table.form {
+  width: max-content !important;
+  max-width: 100%;
+
+  > tbody {
+    display: grid;
+    grid-template-columns: auto minmax(0, 26rem);
+    align-items: center;
+    column-gap: 0.65rem;
+    row-gap: 0.15rem;
+  }
+
+  > tbody > tr {
+    display: contents;
+  }
+
+  th,
+  td {
+    width: auto !important;
+    border: none !important;
+    background: transparent !important;
+    color: var(--fg) !important;
+    text-align: left !important;
+    font-weight: normal;
+  }
+
+  th {
+    padding: 0.4rem 0.6rem 0.4rem 0;
+    min-width: 0;
+    white-space: nowrap;
+
+    label {
+      color: var(--grey1);
+      cursor: pointer;
+    }
+  }
+
+  td {
+    padding: 0.4rem 0;
+    min-width: 0;
+  }
+
+  > tbody > tr:has(input[type="submit"]) > td {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    padding-top: 0.9rem;
+  }
+
+  #tag_name {
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 26rem;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  select {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 26rem;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+    color: var(--fg) !important;
+    background: var(--bg1) !important;
+    border: solid 1px var(--bg2) !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:focus {
+      border-color: var(--blue) !important;
+      outline: none;
+    }
+
+    option {
+      color: var(--fg);
+      background: var(--bg1);
+    }
+  }
+
+  input[type="checkbox"] {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin: 0;
+    padding: 0;
+    accent-color: var(--blue);
+    cursor: pointer;
+  }
+
+  input[type="submit"] {
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+
+  input[type="button"] {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #content table.form > tbody {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #content table.form th {
+    padding: 0.4rem 0 0.15rem;
+    white-space: normal;
+  }
+
+  #content table.form #tag_name,
+  #content table.form select {
+    max-width: none;
+  }
+}

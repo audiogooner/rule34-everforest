@@ -1,3 +1,226 @@
+@use "sticky-paginator";
+
 /* ----------------------------------------------------
    WIKI LIST
+   Recent-changes sidebar + search + wiki entry table
+   (gelbooru wiki.scss row spacing; post-list sidebar /
+   forum-list search patterns on Rule34 #post-list DOM).
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href*="page=wiki"][href*="s=list"] {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+div#post-list > .content {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+/* ----- Recent changes sidebar ----- */
+
+div#post-list > .sidebar {
+  --sidebar-w: 220px;
+  box-sizing: border-box;
+  flex: 0 0 var(--sidebar-w);
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  max-width: var(--sidebar-w);
+  margin: 0 1rem 0 0 !important;
+  padding: 0.35rem 0.75rem 1.25rem 0;
+  border-right: solid 1px var(--bg2);
+}
+
+div#post-list > .sidebar .sidebar3 {
+  > br {
+    display: none;
+  }
+
+  > b {
+    display: block;
+    margin: 0 0 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 1.05em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+  }
+}
+
+ul#tag-sidebar {
+  margin: 0 !important;
+  padding: 0;
+
+  > li {
+    display: block !important;
+    width: auto !important;
+    margin: 0.12rem 0 !important;
+    color: var(--grey1);
+    line-height: 1.45;
+    word-break: break-word;
+  }
+}
+
+/* ----- Main column ----- */
+
+div#post-list > .content {
+  > br {
+    display: none;
+  }
+
+  > h3 {
+    margin: 0 0 0.65rem;
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  > b {
+    color: var(--orange);
+    font-weight: 700;
+  }
+}
+
+div#post-list div#search {
+  margin: 0 0 1rem !important;
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+    max-width: 36rem;
+  }
+
+  input[type="text"] {
+    flex: 1 1 12rem;
+    min-width: 0;
+    box-sizing: border-box;
+    width: auto !important;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  input[type="submit"] {
+    flex: 0 0 auto;
+    width: auto !important;
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+}
+
+/* ----- Wiki entry rows ----- */
+
+div#post-list > .content > table.highlightable {
+  width: 100% !important;
+
+  td {
+    padding: 0.65rem 0.85rem !important;
+    vertical-align: middle !important;
+    text-align: left !important;
+  }
+
+  td:first-child {
+    width: 3.25rem !important;
+    text-align: center !important;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    img {
+      display: block;
+      width: auto;
+      max-width: 2rem;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 7px;
+    }
+  }
+
+  td:nth-child(2) {
+    min-width: 0;
+
+    > a:first-child {
+      color: var(--fg) !important;
+      font-size: 1.05rem;
+      font-weight: 600;
+      word-break: break-word;
+
+      &:hover {
+        color: var(--aqua) !important;
+      }
+    }
+
+    span {
+      display: inline-block;
+      margin-top: 0.25rem;
+      color: var(--grey1) !important;
+      font-size: 0.8rem !important;
+      line-height: 1.45;
+
+      a {
+        color: var(--blue) !important;
+        font-weight: 500;
+
+        &:hover {
+          color: var(--aqua) !important;
+        }
+      }
+    }
+  }
+
+  td:last-child {
+    width: 8.5rem !important;
+    text-align: center !important;
+
+    h3 {
+      margin: 0;
+      color: var(--grey1);
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+  }
+}
+
+div#post-list div#paginator {
+  @include sticky-paginator.compact;
+}
+
+@media only screen and (max-width: 720px) {
+  div#post-list {
+    flex-direction: column !important;
+  }
+
+  div#post-list > .sidebar {
+    flex: none;
+    width: 100%;
+    max-width: none;
+    margin: 0 0 1rem !important;
+    padding: 0 0 1rem;
+    border-right: none;
+    border-bottom: solid 1px var(--bg2);
+  }
+
+  div#post-list > .content > table.highlightable {
+    td:last-child {
+      width: 6rem !important;
+    }
+  }
+}

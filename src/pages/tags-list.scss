@@ -1,3 +1,209 @@
 /* ----------------------------------------------------
    TAGS LIST
+   Search form grid + tag table (gelbooru tags-list pattern,
+   Rule34 DOM: #name / #order, submit in tfoot).
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href*="page=tags"][href*="s=list"] {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+#content {
+  > div > br,
+  > br {
+    display: none;
+  }
+}
+
+#content table.form {
+  width: max-content !important;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: max-content minmax(12rem, 26rem) max-content;
+  justify-content: start;
+  justify-items: start;
+  align-items: start;
+  column-gap: 0.4rem;
+  row-gap: 0.15rem;
+
+  tbody,
+  tfoot,
+  tr {
+    display: contents;
+  }
+
+  tfoot input[type="hidden"] {
+    display: none;
+  }
+
+  th,
+  td {
+    width: auto !important;
+    border: none !important;
+    background: transparent !important;
+    color: var(--fg) !important;
+    text-align: left !important;
+    vertical-align: top;
+    font-weight: normal;
+  }
+
+  th {
+    padding: 0.45rem 1rem 0.45rem 0;
+    white-space: nowrap;
+
+    p {
+      margin: 0.35rem 0 0;
+      color: var(--grey1);
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+  }
+
+  td {
+    padding: 0.35rem 0;
+  }
+
+  tr:has(#name) > th {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  tr:has(#name) > td {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100% !important;
+    min-width: 0;
+  }
+
+  tr:has(#order) > th {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  tr:has(#order) > td {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.75rem;
+  }
+
+  tfoot tr > td:has(input[type="submit"]) {
+    grid-column: 3;
+    grid-row: 1;
+    width: max-content !important;
+    align-self: start;
+    padding: 0.35rem 0 0;
+  }
+
+  tfoot tr > td:empty {
+    display: none !important;
+  }
+
+  #name {
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 26rem;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  .awesomplete {
+    display: block;
+    width: 100%;
+    max-width: 26rem;
+  }
+
+  select {
+    width: auto !important;
+    min-width: 10rem;
+    max-width: 14rem;
+    box-sizing: border-box;
+    padding: 0.45rem 0.65rem !important;
+    color: var(--fg) !important;
+    background: var(--bg1) !important;
+    border: solid 1px var(--bg2) !important;
+    border-radius: 7px !important;
+  }
+
+  input[type="radio"] {
+    margin: 0;
+    accent-color: var(--blue);
+  }
+
+  label[for="sortAsc"],
+  label[for="sortDesc"] {
+    color: var(--grey1);
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  input[type="submit"] {
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+}
+
+#content table.highlightable {
+  td {
+    padding: 0.45rem 0.75rem;
+    word-break: break-word;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #content table.form {
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    th {
+      grid-column: 1 / -1 !important;
+      padding-right: 0;
+      padding-bottom: 0.25rem;
+      white-space: normal;
+
+      p {
+        white-space: normal;
+      }
+    }
+
+    tr:has(#name) > td {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    tfoot tr > td:has(input[type="submit"]) {
+      grid-column: 2;
+      grid-row: 2;
+      align-self: start;
+    }
+
+    tr:has(#order) > td {
+      grid-column: 1 / -1 !important;
+      grid-row: 3;
+    }
+
+    #name,
+    .awesomplete {
+      max-width: none;
+    }
+
+    select {
+      width: 100% !important;
+      max-width: none;
+    }
+  }
+}

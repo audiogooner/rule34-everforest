@@ -46,7 +46,7 @@ Media `src` values are stripped, script bodies are emptied (tags stay so `nth-ch
 | pool-show | https://rule34.xxx/index.php?page=pool&s=show&id=58987 | [html](pages/pool-show.html) · [outline](pages/pool-show.outline.txt) · [meta](pages/pool-show.json) | 12 | [desktop.css](css/desktop.css) |
 | post-add-video | https://rule34.xxx/index.php?page=post&s=addVideo | [html](pages/post-add-video.html) · [outline](pages/post-add-video.outline.txt) · [meta](pages/post-add-video.json) | 15 | [desktop.css](css/desktop.css) |
 | post-add | https://rule34.xxx/index.php?page=post&s=add | [html](pages/post-add.html) · [outline](pages/post-add.outline.txt) · [meta](pages/post-add.json) | 13 | [desktop.css](css/desktop.css) |
-| post-list | https://rule34.xxx/index.php?page=post&s=list&tags=all | [html](pages/post-list.html) · [outline](pages/post-list.outline.txt) · [meta](pages/post-list.json) | 30 | [desktop.css](css/desktop.css) |
+| post-list | https://rule34.xxx/index.php?page=post&s=list&tags=ninomae_ina%26%23039%3bnis | [html](pages/post-list.html) · [outline](pages/post-list.outline.txt) · [meta](pages/post-list.json) | 33 | [desktop.css](css/desktop.css) |
 | post-view | https://rule34.xxx/index.php?page=post&s=view&id=19004009 | [html](pages/post-view.html) · [outline](pages/post-view.outline.txt) · [meta](pages/post-view.json) | 28 | [desktop.css](css/desktop.css) |
 | pp | https://rule34.xxx/pp.php | [html](pages/pp.html) · [outline](pages/pp.outline.txt) · [meta](pages/pp.json) | 9 | [desktop.css](css/desktop.css) |
 | tags-edit | https://rule34.xxx/index.php?page=tags&s=edit&tag=kogurein | [html](pages/tags-edit.html) · [outline](pages/tags-edit.outline.txt) · [meta](pages/tags-edit.json) | 10 | [desktop.css](css/desktop.css) |

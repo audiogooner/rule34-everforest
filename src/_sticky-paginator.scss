@@ -1,0 +1,57 @@
+/* Shared sticky paginator bar (ported from gelbooru-catppuccin).
+   Default chrome lives on `div#paginator` in base.scss. Pages that need a
+   non-zero inset only set `--paginator-inset-x` (pad follows inset unless
+   `--paginator-pad-x` is set). Include this mixin on `.pagination` (or
+   another wrapper) when the bar is not `div#paginator`.
+
+   `$inset-x` should mirror the parent's horizontal padding when the bar is
+   meant to span the parent's full width; `$pad-x` keeps the links off the
+   bar's edges.
+
+   When including this on the paginator itself, select it as `div#paginator`:
+   the site stylesheets zero its padding at that specificity. */
+
+@mixin bar($inset-x: 0px, $pad-x: null, $compact: false) {
+  --paginator-inset-x: #{$inset-x};
+  @if $pad-x == null {
+    --paginator-pad-x: var(--paginator-inset-x);
+  } @else {
+    --paginator-pad-x: #{$pad-x};
+  }
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin: 0.75rem calc(-1 * var(--paginator-inset-x)) 0;
+  padding: 0.6rem var(--paginator-pad-x);
+  /* Darker tint + blur keeps contrast over thumbs without going solid. */
+  background: color-mix(in srgb, var(--bg_dim) 88%, transparent);
+  backdrop-filter: blur(18px) saturate(1.15);
+  border-top: 1px solid var(--bg3);
+
+  @if $compact {
+    @include compact;
+  }
+
+  /* The wrapper is rendered even when the result set fits on one page. */
+  &:not(:has(a)) {
+    display: none;
+  }
+
+  > br {
+    display: none;
+  }
+}
+
+/* Compact variant for gallery lists. Keep the full-size links while limiting
+   the backdrop to the controls; wrap within narrow viewports. */
+@mixin compact {
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: calc(100% - 1rem);
+  margin: 0.75rem auto;
+  padding: 0.4rem;
+  bottom: 0.5rem;
+  border: 1px solid var(--bg3);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgb(0 0 0 / 28%);
+}

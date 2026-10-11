@@ -1,3 +1,311 @@
 /* ----------------------------------------------------
    ACCOUNT OPTIONS
+   Rule34 #user-edit form (table.form.highlightable).
+   Patterns from gelbooru account-options; selectors from snapshot.
    ---------------------------------------------------- */
+
+#header #subnavbar a[href*="s=options"] {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+div#content {
+  > br {
+    display: none;
+  }
+}
+
+div#user-edit {
+  max-width: 56rem;
+  color: var(--fg);
+  line-height: 1.55;
+
+  > p {
+    margin: 0 0 1.25rem;
+    max-width: 42em;
+    color: var(--grey1);
+    line-height: 1.55;
+
+    em {
+      display: block;
+      margin: 0 0 0.35rem;
+      color: var(--fg);
+      font-style: normal;
+      font-weight: 600;
+    }
+  }
+
+  table.form.highlightable {
+    width: 100% !important;
+    max-width: 100%;
+    table-layout: auto;
+
+    th,
+    td {
+      width: auto !important;
+      padding: 0.65rem 1rem;
+      vertical-align: top;
+      border: none !important;
+      background: transparent !important;
+      color: var(--fg) !important;
+      text-align: left !important;
+      font-weight: normal;
+    }
+
+    td[width] {
+      width: auto !important;
+    }
+
+    > tbody > tr > td:first-child {
+      width: 15% !important;
+      min-width: 14rem;
+      padding-right: 1.25rem;
+    }
+
+    > tbody > tr > td:last-child {
+      max-width: 36rem;
+    }
+
+    > tbody > tr:has(> input[type="hidden"]) {
+      display: none;
+    }
+
+    label.block {
+      display: block;
+      color: var(--fg);
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0.35rem 0 0;
+      color: var(--grey1);
+      font-size: 0.875rem;
+      line-height: 1.45;
+
+      b {
+        color: var(--fg);
+        font-weight: 600;
+      }
+    }
+
+    textarea {
+      box-sizing: border-box;
+      width: 100% !important;
+      max-width: 36rem;
+      margin: 0;
+      padding: 0.55rem 0.75rem !important;
+      resize: vertical;
+    }
+
+    #tags {
+      min-height: 7rem;
+    }
+
+    input[type="text"] {
+      box-sizing: border-box;
+      max-width: 26rem;
+      margin: 0;
+      padding: 0.55rem 0.75rem !important;
+
+      &[style*="width"] {
+        width: 100% !important;
+        max-width: 26rem;
+      }
+    }
+
+    select {
+      box-sizing: border-box;
+      min-width: 12rem;
+      max-width: 26rem;
+      margin: 0;
+      padding: 0.55rem 0.75rem !important;
+      cursor: pointer;
+    }
+
+    /* Radio groups (original images, theme, CDN). */
+    td:last-child > label:not(.block) {
+      display: inline;
+      margin: 0;
+      color: var(--fg);
+      font-weight: normal;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      width: 1rem;
+      height: 1rem;
+      margin: 0.2rem 0.35rem 0.2rem 0;
+      accent-color: var(--blue);
+      cursor: pointer;
+      vertical-align: middle;
+    }
+
+    td:last-child > br {
+      display: block;
+      content: "";
+      margin-bottom: 0.35rem;
+    }
+
+    ul {
+      margin: 0.5rem 0 0;
+      padding-left: 1.25rem;
+      color: var(--grey1);
+      line-height: 1.5;
+
+      li {
+        margin: 0.25rem 0;
+      }
+    }
+
+    td:last-child > span {
+      display: block;
+      color: var(--grey1);
+      line-height: 1.5;
+    }
+
+    small {
+      color: var(--grey1);
+      font-size: 0.8rem;
+
+      b {
+        color: var(--orange);
+      }
+    }
+
+    input[type="checkbox"] {
+      --toggle-pad: 2px;
+      --toggle-thumb: 16px;
+      --toggle-travel: 16px;
+      --toggle-ease: 0.15s ease;
+
+      appearance: none;
+      position: relative;
+      display: inline-block;
+      box-sizing: border-box;
+      width: 36px;
+      height: 20px;
+      margin: 0.15rem 0.4rem 0.15rem 0;
+      padding: 0 !important;
+      vertical-align: middle;
+      background: var(--bg2) !important;
+      border: none !important;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background-color var(--toggle-ease);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: var(--toggle-pad);
+        width: var(--toggle-thumb);
+        height: var(--toggle-thumb);
+        background: var(--fg);
+        border-radius: 50%;
+        transform: translateY(-50%);
+        transition:
+          transform var(--toggle-ease),
+          background-color var(--toggle-ease);
+      }
+
+      &:checked {
+        background: var(--blue) !important;
+
+        &::before {
+          background: color-mix(in srgb, var(--blue) 12%, var(--bg_dim));
+          transform: translate(var(--toggle-travel), -50%);
+        }
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--blue);
+        outline-offset: 2px;
+      }
+    }
+
+    td:has(input[name="generate_api_key"]) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem 0.55rem;
+
+      textarea {
+        flex: 1 1 100%;
+      }
+
+      input[type="checkbox"] {
+        margin: 0;
+      }
+    }
+
+    > tfoot > tr > td {
+      padding: 1rem 1rem 0.85rem;
+      border-bottom: none !important;
+      border-left: none !important;
+    }
+
+    input[type="submit"][name="submit"] {
+      margin: 0;
+      padding: 0.55rem 1.25rem !important;
+      color: var(--bg_dim) !important;
+      font-weight: 600;
+      background: var(--blue) !important;
+      border: none !important;
+      border-radius: 7px !important;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--aqua) !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  div#user-edit table.form.highlightable {
+    > tbody > tr {
+      display: block;
+
+      > td {
+        display: block;
+        width: 100% !important;
+        min-width: 0;
+        max-width: none;
+        padding: 0.5rem 0.85rem;
+      }
+
+      > td:first-child {
+        padding-bottom: 0.25rem;
+      }
+
+      > td:last-child {
+        padding-top: 0;
+        padding-bottom: 0.85rem;
+      }
+    }
+
+    > tbody > tr:hover {
+      background: transparent !important;
+    }
+
+    textarea,
+    input[type="text"],
+    select {
+      max-width: none !important;
+    }
+
+    > tfoot > tr > td {
+      padding: 0.75rem 0.85rem 1rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  div#user-edit table.form.highlightable input[type="checkbox"] {
+    transition: none;
+
+    &::before {
+      transition: none;
+    }
+  }
+}

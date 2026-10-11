@@ -1,3 +1,90 @@
 /* ----------------------------------------------------
    ACCOUNT HOME
+   Rule34 #user-index: h4 action links + help text.
+   Gelbooru account-home only sets submenu tab; link
+   list patterns adapted from gelbooru help #static-more.
    ---------------------------------------------------- */
+
+#header #subnavbar a[href*="page=account"][href*="s=home"] {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+div#content {
+  > br {
+    display: none;
+  }
+}
+
+div#user-index {
+  box-sizing: border-box;
+  max-width: 42rem;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 2rem;
+  color: var(--fg);
+  font-size: 14px;
+  line-height: 1.55;
+
+  > br {
+    display: none;
+  }
+
+  > h4 {
+    margin: 0 0 0.2rem;
+    padding: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+
+    &:not(:first-child) {
+      margin-top: 1.15rem;
+    }
+
+    a {
+      color: var(--blue) !important;
+      font-weight: inherit;
+      text-decoration: none !important;
+
+      &:hover {
+        color: var(--aqua) !important;
+      }
+    }
+
+    a[href*="s=login"],
+    a[href*="code=01"] {
+      color: var(--red) !important;
+
+      &:hover {
+        color: var(--orange) !important;
+      }
+    }
+  }
+
+  > p {
+    margin: 0;
+    max-width: 38em;
+    color: var(--grey1);
+    line-height: 1.5;
+  }
+
+  > h1 {
+    margin: 2rem 0 0;
+    padding: 1.25rem 0 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.35;
+    border-top: 1px solid var(--bg2);
+
+    a {
+      color: var(--grey1) !important;
+      font-weight: 600;
+      text-decoration: none !important;
+
+      &:hover {
+        color: var(--blue) !important;
+      }
+    }
+  }
+}

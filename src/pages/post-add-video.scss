@@ -1,3 +1,265 @@
 /* ----------------------------------------------------
    POST ADD VIDEO
+   Video upload form (#upload-form / #upload-form-element).
+   Patterns from gelbooru post-add, Rule34 snapshot DOM.
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href*="addVideo"] {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+div#content {
+  padding-bottom: 1.5rem;
+
+  > br {
+    display: none;
+  }
+
+  > center {
+    display: none;
+  }
+
+  > div[style*="text-align: center"] {
+    margin-top: 1rem;
+    color: var(--grey1);
+    font-size: 0.85em;
+
+    a {
+      color: var(--grey1) !important;
+
+      &:hover {
+        color: var(--blue) !important;
+      }
+    }
+  }
+}
+
+div#upload-form {
+  max-width: 850px;
+
+  form#upload-form-element {
+    > h2 {
+      margin: 0 0 0.6rem;
+      font-family: var(--font-sans);
+      font-size: 1.5em;
+      font-weight: bold;
+      color: var(--fg);
+    }
+
+    > br {
+      display: none;
+    }
+
+    > b {
+      display: block;
+      margin-top: 0.75rem;
+      color: var(--fg);
+      line-height: 1.45;
+    }
+
+    table {
+      width: 100% !important;
+      max-width: 850px;
+      border-collapse: collapse;
+
+      th,
+      td {
+        border: none !important;
+        background: transparent !important;
+        color: var(--grey1) !important;
+        text-align: left !important;
+        font-weight: normal;
+        vertical-align: top;
+        padding: 0.35rem 0;
+        line-height: 1.55;
+      }
+
+      td > br {
+        display: block;
+        height: 0;
+        margin: 0.35rem 0 0;
+        content: "";
+      }
+
+      /* ----- Upload guidelines ----- */
+      tr:first-child td > div {
+        margin-bottom: 1.5rem !important;
+        color: var(--grey1);
+        line-height: 1.45;
+
+        h3 {
+          margin: 0 0 0.45rem;
+          font-family: var(--font-sans);
+          font-size: 1.15em;
+          font-weight: 700;
+          color: var(--fg);
+        }
+
+        p {
+          margin: 0 0 0.5rem;
+        }
+
+        h4 {
+          margin: 0 0 0.4rem;
+          font-family: var(--font-sans);
+          font-size: 1.05em;
+          font-weight: 700;
+          color: var(--fg);
+
+          a {
+            color: var(--blue) !important;
+          }
+        }
+
+        ul {
+          margin: 0 0 0.5rem;
+          padding-left: 1.15rem;
+
+          li {
+            margin: 0 0 0.2rem;
+          }
+
+          b {
+            color: var(--fg);
+          }
+
+          a {
+            color: var(--blue) !important;
+          }
+        }
+
+        > br {
+          display: none;
+        }
+      }
+
+      label {
+        color: var(--fg);
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      input[type="text"]#txtSource {
+        box-sizing: border-box;
+        display: block;
+        width: 100% !important;
+        max-width: 36rem;
+        margin: 0.15rem 0 0.35rem;
+        padding: 0.4rem 0.6rem !important;
+      }
+
+      input[type="file"]#fileUpload {
+        display: block;
+        width: auto !important;
+        max-width: 100%;
+        margin: 0.15rem 0 0.35rem;
+        padding: 0.3rem 0.45rem !important;
+        cursor: pointer;
+
+        &::file-selector-button {
+          margin-right: 0.6rem;
+          padding: 0.3rem 0.8rem;
+          color: var(--fg);
+          font-family: inherit;
+          font-size: inherit;
+          background: var(--bg2);
+          border: none;
+          border-radius: 7px;
+          cursor: pointer;
+
+          &:hover {
+            background: var(--bg3);
+          }
+        }
+      }
+
+      textarea#tags.tagBox {
+        box-sizing: border-box;
+        display: block;
+        width: 100% !important;
+        max-width: 36rem;
+        min-height: 5.5rem;
+        margin: 0.15rem 0 0.35rem;
+        padding: 0.4rem 0.6rem !important;
+        line-height: 1.5;
+        resize: vertical;
+      }
+
+      div.awesomplete {
+        display: block;
+        max-width: 36rem;
+      }
+
+      div.notice {
+        margin: 0.35rem 0 0.5rem;
+        padding: 0;
+        font-size: 0.95em;
+      }
+
+      input[type="radio"] {
+        margin: 0 0.3rem 0 1rem;
+        vertical-align: middle;
+        accent-color: var(--blue);
+
+        &:first-of-type {
+          margin-left: 0;
+        }
+      }
+
+      td:has(#submitBtn) {
+        padding-top: 0.5rem;
+      }
+
+      input#submitBtn.searchList {
+        width: auto !important;
+        margin-top: 0.25rem;
+
+        &:disabled {
+          opacity: 0.55;
+          cursor: not-allowed;
+
+          &:hover {
+            background: var(--blue) !important;
+          }
+        }
+      }
+
+      td#progress {
+        padding-top: 0.75rem;
+        color: var(--grey1);
+
+        > div {
+          box-sizing: border-box;
+          width: min(100%, 28rem) !important;
+          min-width: 0 !important;
+          height: 1.25rem !important;
+          margin: 0.35rem 0 0.25rem;
+          padding: 0 !important;
+          overflow: hidden;
+          background: var(--bg1) !important;
+          border: 1px solid var(--bg2) !important;
+          border-radius: 10px;
+          text-align: left !important;
+        }
+
+        #progress-bar {
+          height: 100% !important;
+          margin: 0 !important;
+          background: var(--blue) !important;
+          border-radius: 10px;
+          transition: width 0.15s ease;
+        }
+
+        #progress-text {
+          color: var(--fg);
+          font-size: 0.9em;
+        }
+      }
+
+      td:has(.cf-turnstile) {
+        padding-top: 0.5rem;
+      }
+    }
+  }
+}

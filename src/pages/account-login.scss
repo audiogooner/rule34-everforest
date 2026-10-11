@@ -1,3 +1,153 @@
 /* ----------------------------------------------------
    ACCOUNT LOGIN
+   Rule34 #user-login: stacked label+field rows in a
+   plain table (no table.form class).
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href*="page=account"][href*="s=home"] {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+div#content {
+  > br {
+    display: none;
+  }
+}
+
+div#user-login.page {
+  box-sizing: border-box;
+  max-width: 28rem;
+  width: 100%;
+
+  h4 {
+    margin: 0 0 0.65rem;
+    color: var(--fg);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  > p {
+    margin: 0 0 1.25rem;
+    max-width: 42em;
+    color: var(--grey1);
+    line-height: 1.55;
+
+    a[href*="s=reg"] {
+      color: var(--green) !important;
+      font-weight: 600;
+      text-decoration: none !important;
+
+      &:hover {
+        color: var(--aqua) !important;
+      }
+    }
+  }
+
+  form table {
+    width: 100% !important;
+    max-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    td {
+      width: auto !important;
+      padding: 0 0 0.85rem;
+      border: none !important;
+      background: transparent !important;
+      color: var(--grey1) !important;
+      text-align: left !important;
+      font-weight: normal;
+      vertical-align: top;
+
+      br {
+        display: none;
+      }
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 26rem;
+      margin-top: 0.35rem;
+      padding: 0.55rem 0.75rem !important;
+      color: var(--fg) !important;
+    }
+
+    tr:has(input[type="submit"]) td {
+      padding-top: 0.25rem;
+      padding-bottom: 0.65rem;
+      color: var(--fg) !important;
+    }
+
+    input[type="submit"] {
+      margin: 0;
+      padding: 0.55rem 1.25rem !important;
+      color: var(--bg_dim) !important;
+      font-weight: 600;
+      background: var(--blue) !important;
+      border: none !important;
+      border-radius: 7px !important;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--aqua) !important;
+      }
+    }
+
+    tr:has(a[href*="reset_password"]),
+    tr:has(a[href*="find_account"]) {
+      td {
+        padding: 0.2rem 0;
+      }
+
+      a {
+        color: var(--grey1) !important;
+        font-size: 0.92rem;
+        text-decoration: none !important;
+
+        &:hover {
+          color: var(--blue) !important;
+        }
+      }
+    }
+
+    tr:has(.cf-turnstile) td,
+    tr:has(td[style*="300px"]) td {
+      padding-bottom: 1rem;
+    }
+
+    .cf-turnstile {
+      display: block;
+      margin-top: 0.45rem;
+      max-width: 100%;
+    }
+  }
+}
+
+body:has(div#user-login) div#content ~ div[style*="text-align: center"] {
+  margin-top: 1.25rem;
+  color: var(--grey1);
+  font-size: 0.85rem;
+
+  a {
+    color: var(--grey1) !important;
+    text-decoration: none !important;
+
+    &:hover {
+      color: var(--fg) !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  div#user-login.page form table {
+    input[type="text"],
+    input[type="password"] {
+      max-width: none;
+    }
+  }
+}

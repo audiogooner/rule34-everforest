@@ -1,3 +1,142 @@
 /* ----------------------------------------------------
-   GMAIL VIEW
+   GMAIL VIEW — single message (.mailmessage)
+   Rule34 PM view at page=gmail&s=view. Gelbooru
+   conversation-view action/report/delete semantics;
+   layout mirrors gmail-send-pm; DOM from snapshots.
    ---------------------------------------------------- */
+
+#header #navbar a[href*="page=account"] {
+  color: var(--blue) !important;
+}
+
+div#content {
+  box-sizing: border-box;
+  padding: 0 1.25rem 2rem;
+  color: var(--fg);
+  line-height: 1.55;
+
+  > br {
+    display: none;
+  }
+}
+
+div.mailmessage {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 56rem;
+  margin: 0;
+
+  > br {
+    display: none;
+  }
+
+  > h4 {
+    margin: 0 0 1rem;
+    color: var(--blue) !important;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  > div.mailhint {
+    box-sizing: border-box;
+    margin: 0 0 1rem;
+    padding: 0.85rem 1rem !important;
+    color: var(--fg) !important;
+    font-weight: 500;
+    line-height: 1.45;
+    background: var(--bg1) !important;
+    border: 1px solid var(--orange) !important;
+    border-radius: 10px;
+
+    br {
+      display: none;
+    }
+  }
+
+  div.mailfooter {
+    margin: 0;
+
+    div.mailbuttons.link-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem 0.75rem;
+      margin: 0;
+      padding: 0.65rem 1rem;
+      color: var(--grey1) !important;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: center;
+      background: var(--bg0);
+      border: 1px solid var(--bg2);
+      border-radius: 10px;
+
+      a {
+        text-decoration: none !important;
+
+        &::after {
+          content: none !important;
+        }
+      }
+
+      a[href^="javascript"] {
+        display: inline-block;
+        padding: 0.5rem 1.15rem;
+        color: var(--bg_dim) !important;
+        font-weight: 600;
+        background: var(--blue) !important;
+        border-radius: 7px;
+
+        &:hover {
+          background: var(--aqua) !important;
+        }
+      }
+
+      a[href*="s=list"] {
+        color: var(--blue) !important;
+
+        &:hover {
+          color: var(--aqua) !important;
+        }
+      }
+
+      a[href*="action=report"] {
+        color: var(--orange) !important;
+        font-weight: 600;
+
+        &:hover {
+          color: var(--yellow) !important;
+        }
+      }
+
+      a[href*="action=delete"] {
+        color: var(--red) !important;
+        font-weight: 600;
+
+        &:hover {
+          color: var(--bg_dim) !important;
+          background: var(--red);
+          border-radius: 7px;
+          padding: 0.35rem 0.65rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  div#content {
+    padding: 0.75rem 1rem 1.5rem;
+  }
+
+  div.mailmessage div.mailfooter div.mailbuttons.link-list {
+    flex-direction: column;
+    align-items: stretch;
+
+    a[href^="javascript"] {
+      text-align: center;
+    }
+  }
+}

@@ -1,3 +1,291 @@
+@use "sticky-paginator";
+
 /* ----------------------------------------------------
    ALIAS LIST
+   Search, highlightable alias table, add/reason panels
+   (gelbooru alias-list patterns; Rule34 DOM from snapshot).
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href*="page=alias"][href*="s=list"] {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+#content {
+  color: var(--fg);
+  line-height: 1.55;
+
+  > br {
+    display: none;
+  }
+
+  > div[style*="ff0000"],
+  > div[style*="#ff0000"] {
+    margin: 0.35rem 0 0.85rem !important;
+    color: var(--orange) !important;
+    line-height: 1.5;
+  }
+}
+
+/* ----- Search aliases ----- */
+
+#content > div:has(> form > #query) {
+  margin: 0 0 1rem !important;
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    max-width: 36rem;
+  }
+
+  #query {
+    flex: 1 1 14rem;
+    min-width: 0;
+    box-sizing: border-box;
+    width: auto !important;
+    max-width: 28rem;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  input[type="submit"] {
+    flex: 0 0 auto;
+    width: auto !important;
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+}
+
+/* ----- Alias table ----- */
+
+#aliases {
+  margin-bottom: 0.75rem;
+
+  table.highlightable {
+    width: 100% !important;
+
+    td {
+      padding: 0.45rem 0.75rem;
+      word-break: break-word;
+      vertical-align: top;
+    }
+
+    td:first-child {
+      width: 1%;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    input[type="checkbox"] {
+      margin: 0;
+      accent-color: var(--blue);
+      vertical-align: middle;
+    }
+
+    tr:has(> td > input.pending) {
+      background: color-mix(in srgb, var(--blue) 16%, var(--bg_dim)) !important;
+    }
+
+    td:nth-child(2),
+    td:nth-child(3) {
+      color: var(--grey1);
+
+      a {
+        color: var(--blue) !important;
+        font-weight: 600;
+
+        &:hover {
+          color: var(--aqua) !important;
+        }
+      }
+    }
+
+    td:last-child {
+      color: var(--fg);
+    }
+  }
+}
+
+/* ----- Add alias (toggle / inline on list) ----- */
+
+#add-box {
+  margin: 0 0 1.25rem;
+  padding: 0;
+
+  h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05em;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+  }
+
+  p {
+    margin: 0 0 1rem;
+    max-width: 42em;
+    color: var(--grey1);
+    line-height: 1.55;
+
+    b {
+      color: var(--fg);
+    }
+  }
+
+  table {
+    width: 100% !important;
+    max-width: 36rem;
+    border-collapse: collapse;
+
+    th,
+    td {
+      border: none !important;
+      background: transparent !important;
+      color: var(--fg) !important;
+      text-align: left !important;
+      vertical-align: top;
+      font-weight: normal;
+    }
+
+    th {
+      width: 6.5rem;
+      padding: 0.4rem 1rem 0.4rem 0;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.4rem 0;
+    }
+  }
+
+  #tag_alias_name,
+  #tag_alias_alias {
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 26rem;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  textarea#tag_alias_reason {
+    width: 100% !important;
+    max-width: 26rem;
+    box-sizing: border-box;
+    min-height: 6rem;
+    padding: 0.55rem 0.75rem !important;
+    resize: vertical;
+  }
+
+  input[type="submit"] {
+    margin: 0.15rem 0 0.65rem;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+}
+
+/* ----- Bulk delete reason (admin) ----- */
+
+#reason-box {
+  margin-top: 1em !important;
+  padding: 0.85rem 1rem;
+  background: var(--bg0);
+  border: 1px solid var(--bg2);
+  border-radius: 10px;
+  max-width: 36rem;
+
+  strong {
+    display: inline-block;
+    margin-right: 0.5rem;
+    color: var(--fg);
+  }
+
+  #reason {
+    box-sizing: border-box;
+    width: min(100%, 20rem) !important;
+    margin: 0 0.5rem 0.5rem 0;
+    padding: 0.55rem 0.75rem !important;
+    vertical-align: middle;
+  }
+
+  input[type="submit"] {
+    margin: 0.5rem 0 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--red) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: color-mix(in srgb, var(--red) 82%, var(--fg)) !important;
+    }
+  }
+}
+
+div#paginator {
+  @include sticky-paginator.compact;
+}
+
+@media only screen and (max-width: 600px) {
+  #content > div:has(> form > #query) {
+    #query {
+      max-width: none;
+    }
+  }
+
+  #add-box table {
+    > tbody > tr {
+      display: block;
+
+      > th,
+      > td {
+        display: block;
+        width: 100% !important;
+        padding-right: 0;
+      }
+
+      > th {
+        padding-bottom: 0.2rem;
+      }
+
+      > td {
+        padding-bottom: 0.75rem;
+      }
+    }
+
+    #tag_alias_name,
+    #tag_alias_alias,
+    textarea#tag_alias_reason {
+      max-width: none;
+    }
+  }
+
+  #reason-box {
+    #reason {
+      display: block;
+      width: 100% !important;
+      margin: 0.35rem 0 0.65rem;
+    }
+  }
+}

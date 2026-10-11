@@ -1,3 +1,132 @@
 /* ----------------------------------------------------
    HISTORY — NOTES
+   Post note revision list (`table.row-highlight`).
+   Shared history UI (status stripe, revert, table chrome)
+   mirrors the tag-history page (`#history.highlightable`);
+   see src/pages/history.scss when that bundle is filled.
    ---------------------------------------------------- */
+
+#header #navbar a[href*="page=post"][href*="s=list"] {
+  color: var(--blue) !important;
+}
+
+div#content {
+  box-sizing: border-box;
+  padding: 0 1.25rem 2rem;
+  overflow-x: auto;
+
+  > br {
+    display: none;
+  }
+}
+
+div#content > table.row-highlight {
+  width: 100% !important;
+  min-width: 44rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--bg2);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg0);
+
+  /* Header row lives in tbody (no thead). */
+  > tbody > tr:first-child {
+    background: var(--blue) !important;
+
+    th {
+      padding: 0.55rem 0.75rem !important;
+      text-align: left !important;
+      font-weight: 600;
+      white-space: nowrap;
+      border: none !important;
+      border-bottom: 1px solid var(--bg2) !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      color: var(--bg_dim) !important;
+
+      + th {
+        border-left: 1px solid color-mix(in srgb, var(--bg_dim) 22%, transparent) !important;
+      }
+    }
+
+    th:first-child {
+      width: 0.35rem;
+      min-width: 0.35rem;
+      padding: 0 !important;
+    }
+  }
+
+  > tbody > tr:not(:first-child) {
+    background: var(--bg0) !important;
+
+    &:hover {
+      background: var(--bg2) !important;
+    }
+
+    > td {
+      padding: 0.55rem 0.75rem;
+      vertical-align: top;
+      text-align: left !important;
+      color: var(--fg) !important;
+      word-break: break-word;
+      border: none !important;
+      border-bottom: 1px solid var(--bg2) !important;
+      background: transparent !important;
+
+      + td {
+        border-left: 1px solid var(--bg2) !important;
+      }
+
+      /* Active-revision indicator (site inline rgb(243, 6, 1)). */
+      &[style*="243, 6, 1"],
+      &[style*="243,6,1"] {
+        width: 0.35rem !important;
+        min-width: 0.35rem !important;
+        padding: 0 !important;
+        background: var(--red) !important;
+      }
+    }
+
+    &:last-child > td {
+      border-bottom: none !important;
+    }
+  }
+
+  td:nth-child(6) {
+    color: var(--grey1);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  td:nth-child(4) {
+    line-height: 1.55;
+
+    i {
+      color: var(--grey1);
+      font-style: italic;
+    }
+
+    b {
+      color: var(--fg);
+      font-weight: 600;
+    }
+  }
+
+  a {
+    color: var(--blue) !important;
+
+    &:hover {
+      color: var(--aqua) !important;
+    }
+  }
+
+  td:last-child a[href="#"] {
+    color: var(--red) !important;
+    font-weight: 600;
+
+    &:hover {
+      color: var(--orange) !important;
+    }
+  }
+}

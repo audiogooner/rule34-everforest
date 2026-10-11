@@ -1,3 +1,209 @@
+@use "sticky-paginator";
+
 /* ----------------------------------------------------
    ARTIST SHOW
+   Read-only artist detail (#artist h3 + table.form).
+   Submenu / footer actions mirror artist-list siblings;
+   Rule34 snapshot DOM (empty metadata table on capture).
    ---------------------------------------------------- */
+
+#header #subnavbar {
+  > li > a[href*="page=artist"][href*="s=list"] {
+    color: var(--blue) !important;
+    font-weight: 600;
+  }
+
+  > li > a[href="#"] {
+    color: var(--green) !important;
+  }
+
+  > li > a[href*="s=update"] {
+    color: var(--green) !important;
+  }
+
+  > li > a[href*="page=post"][href*="tags="] {
+    color: var(--blue) !important;
+    font-weight: 600;
+  }
+
+  /* Edit · Delete · View posts (Help stays outside). */
+  > li:has(> a[href*="s=update"]),
+  > li:has(> a[href*="removeartist"]),
+  > li:has(> a[href*="page=post"][href*="tags="]) {
+    background: var(--bg1);
+
+    > a {
+      margin: 0.45rem 0.75rem !important;
+    }
+  }
+
+  > li:has(> a[href*="s=update"]) {
+    margin-left: auto;
+    border-radius: 7px 0 0 7px;
+  }
+
+  > li:has(> a[href*="page=post"][href*="tags="]) {
+    border-radius: 0 7px 7px 0;
+  }
+}
+
+#content {
+  > br {
+    display: none;
+  }
+
+  > div[style*="margin-bottom"] {
+    margin-bottom: 0 !important;
+  }
+}
+
+#content #artist {
+  max-width: 52rem;
+
+  > h3 {
+    margin: 0 0 1rem;
+    font-size: 1.35em;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--fg);
+  }
+
+  > div[style*="margin-bottom"] {
+    margin-bottom: 1rem !important;
+    clear: both;
+  }
+
+  table.form {
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 42em;
+    margin: 0;
+    padding: 1rem 1.25rem;
+    background: var(--bg0);
+    border: 1px solid var(--bg2);
+    border-radius: 10px;
+
+    > tbody:has(th) {
+      display: grid;
+      grid-template-columns: minmax(8rem, auto) minmax(0, 1fr);
+      align-items: start;
+      column-gap: 0.85rem;
+      row-gap: 0.45rem;
+    }
+
+    > tbody:has(th) > tr {
+      display: contents;
+    }
+
+    th {
+      padding: 0.2rem 0;
+      color: var(--grey1);
+      font-weight: 600;
+      white-space: nowrap;
+      vertical-align: top;
+    }
+
+    td {
+      padding: 0.2rem 0;
+      color: var(--fg);
+      line-height: 1.55;
+      word-break: break-word;
+      vertical-align: top;
+
+      a {
+        color: var(--blue) !important;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--aqua) !important;
+        }
+      }
+    }
+
+    /* Snapshot placeholder: single empty cell when artist has no fields. */
+    > tbody > tr:only-child > td:only-child:empty {
+      display: none;
+    }
+
+    > tbody:has(> tr:only-child > td:only-child:empty) {
+      display: none;
+    }
+
+    &:not(:has(tbody th)):has(tbody > tr:only-child > td:only-child:empty) {
+      display: none;
+    }
+  }
+}
+
+div#footer {
+  clear: both;
+  margin: 1.25rem 0 0;
+  padding: 0.85rem 1rem !important;
+  max-width: 42em;
+  line-height: 1.65;
+  color: var(--grey1);
+  background: var(--bg0) !important;
+  border: 1px solid var(--bg2);
+  border-radius: 10px;
+
+  > br {
+    display: none;
+  }
+
+  > a[href*="page=post"] {
+    display: inline-block;
+    margin: 0 0 0.4rem;
+    color: var(--blue) !important;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--aqua) !important;
+    }
+  }
+
+  #label {
+    color: var(--grey1);
+  }
+
+  a[href*="s=update"] {
+    color: var(--green) !important;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--aqua) !important;
+    }
+  }
+}
+
+div#paginator {
+  @include sticky-paginator.compact;
+}
+
+@media only screen and (max-width: 600px) {
+  #header #subnavbar {
+    > li:has(> a[href*="s=update"]) {
+      margin-left: 0;
+    }
+
+    > li:has(> a[href*="s=update"]),
+    > li:has(> a[href*="removeartist"]),
+    > li:has(> a[href*="page=post"][href*="tags="]) {
+      border-radius: 0;
+
+      > a {
+        margin: 0.35rem 0.55rem !important;
+      }
+    }
+  }
+
+  #content #artist table.form > tbody:has(th) {
+    grid-template-columns: 1fr;
+    row-gap: 0.15rem;
+  }
+
+  #content #artist table.form th {
+    padding-bottom: 0;
+  }
+}

@@ -1,3 +1,90 @@
 /* ----------------------------------------------------
-   ICAME
+   ICAME — Top 100 leaderboard
+   Rule34 DOM: bare div + h1 + table.highlightable (no #content).
+   Table cell patterns aligned with tags-list / history tables.
    ---------------------------------------------------- */
+
+body > div:has(> table.highlightable) {
+  box-sizing: border-box;
+  margin: 0 !important;
+  max-width: 44rem;
+  padding: 0 20px 2rem;
+  color: var(--fg);
+  font-size: 0.95rem;
+  line-height: 1.55;
+
+  > br {
+    display: none;
+  }
+
+  > h1 {
+    margin: 0 0 0.75rem;
+    color: var(--blue) !important;
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  > table.highlightable {
+    margin-top: 1.25rem;
+  }
+}
+
+table.highlightable {
+  width: 100% !important;
+  max-width: 100%;
+
+  thead th {
+    padding: 0.55rem 0.75rem !important;
+    text-align: left !important;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+
+  tbody td {
+    padding: 0.45rem 0.75rem;
+    vertical-align: middle;
+    word-break: break-word;
+  }
+
+  tbody td:first-child {
+    width: 3.25rem;
+    text-align: right;
+    color: var(--grey1);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+
+  tbody tr:nth-child(-n + 3) td:first-child {
+    color: var(--orange);
+  }
+
+  tbody td:nth-child(2) a {
+    font-weight: 600;
+
+    &:hover {
+      color: var(--aqua) !important;
+    }
+  }
+
+  tbody td:last-child {
+    text-align: right;
+    color: var(--grey0);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body > div:has(> table.highlightable) {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  table.highlightable {
+    tbody td:last-child {
+      white-space: normal;
+    }
+  }
+}

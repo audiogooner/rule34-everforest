@@ -1,3 +1,261 @@
 /* ----------------------------------------------------
    POST ADD
+   Image upload form (`div#upload-form`). Patterns from
+   gelbooru-catppuccin post-add, mapped onto Rule34's
+   table-stacked fields (see snapshot).
    ---------------------------------------------------- */
+
+#header #navbar a[href*="page=post"][href*="s=list"] {
+  color: var(--blue) !important;
+}
+
+#header #subnavbar > li > a[href*="page=post"][href*="s=add"]:not([href*="addVideo"]) {
+  color: var(--blue) !important;
+}
+
+div#content {
+  box-sizing: border-box;
+  padding: 0 1.25rem 2rem;
+
+  > br {
+    display: none;
+  }
+
+  > center {
+    color: var(--grey2);
+    font-size: 0.75rem;
+  }
+
+  > div:has(> p > a[href="#"]) {
+    margin-top: 1.25rem;
+    color: var(--grey1);
+    font-size: 0.85rem;
+
+    a {
+      color: var(--blue) !important;
+    }
+  }
+}
+
+div#upload-form {
+  max-width: 50rem;
+
+  form {
+    > h2 {
+      margin: 0 0 0.75rem;
+      font-family: var(--font-sans);
+      font-size: 1.5em;
+      font-weight: 700;
+      color: var(--fg);
+    }
+
+    > br {
+      display: none;
+    }
+
+    > table {
+      box-sizing: border-box;
+      width: 100% !important;
+      max-width: 50rem;
+      border-collapse: collapse;
+
+      td {
+        padding: 0.35rem 0;
+        vertical-align: top;
+        text-align: left !important;
+        color: var(--fg) !important;
+        border: none !important;
+        background: transparent !important;
+      }
+
+      > tbody > tr:not(:first-child) > td {
+        padding-top: 0.75rem;
+      }
+
+      label {
+        font-weight: 600;
+      }
+
+      a {
+        color: var(--blue) !important;
+      }
+    }
+  }
+}
+
+/* ----- Upload guidelines (first table row) ----- */
+
+div#upload-form form > table > tbody > tr:first-child td > div {
+  box-sizing: border-box;
+  max-width: 50rem;
+  margin: 0 0 1rem !important;
+  padding: 1rem 1.15rem;
+  color: var(--grey1);
+  line-height: 1.45;
+  background: var(--bg0);
+  border: 1px solid var(--bg2);
+  border-radius: 10px;
+
+  > br {
+    display: none;
+  }
+
+  h3 {
+    margin: 0 0 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--fg);
+  }
+
+  h4 {
+    margin: 0.65rem 0 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--fg);
+  }
+
+  p {
+    margin: 0 0 0.5rem;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.15rem;
+
+    li {
+      margin: 0 0 0.35rem;
+    }
+
+    b {
+      color: var(--fg);
+    }
+  }
+}
+
+/* ----- Fields ----- */
+
+div#upload-form form > table {
+  input#txtSource,
+  input#txtTitle {
+    box-sizing: border-box;
+    display: block;
+    width: 100% !important;
+    max-width: 36rem;
+    margin-top: 0.35rem;
+    padding: 0.45rem 0.65rem !important;
+  }
+
+  .awesomplete {
+    display: block;
+    width: 100%;
+    max-width: 36rem;
+    margin-top: 0.35rem;
+  }
+
+  textarea#tags {
+    box-sizing: border-box;
+    display: block;
+    width: 100% !important;
+    min-height: 9rem;
+    margin: 0;
+    padding: 0.45rem 0.65rem !important;
+    line-height: 1.5;
+    resize: vertical;
+  }
+
+  input[type="file"]#fileUpload {
+    display: block;
+    width: auto !important;
+    max-width: 100%;
+    margin-top: 0.35rem;
+    padding: 0.3rem 0.45rem !important;
+    cursor: pointer;
+
+    &::file-selector-button {
+      margin-right: 0.6rem;
+      padding: 0.3rem 0.8rem;
+      color: var(--fg);
+      font-family: inherit;
+      font-size: inherit;
+      background: var(--bg2);
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--bg3);
+      }
+    }
+  }
+
+  input[type="radio"] {
+    margin: 0 0.3rem 0 1rem;
+    vertical-align: middle;
+    accent-color: var(--blue);
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  #sourceNotice,
+  #titleNotice,
+  #tagsNotice {
+    margin-top: 0.35rem;
+  }
+
+  div#my-tags {
+    margin-top: 0.35rem;
+    color: var(--grey1);
+    font-size: 0.9rem;
+  }
+
+  div.cf-turnstile {
+    margin-top: 0.35rem;
+  }
+}
+
+/* ----- Submit row / legal copy ----- */
+
+div#upload-form form > table > tbody > tr:last-child td {
+  > b {
+    display: block;
+    margin: 0 0 0.75rem;
+    color: var(--grey1);
+    font-size: 0.9rem;
+    font-weight: normal;
+    line-height: 1.45;
+
+    a {
+      font-weight: 600;
+    }
+  }
+
+  input[type="submit"][name="submit"] {
+    display: inline-block;
+    width: auto !important;
+    margin: 0 0 0.75rem;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+
+    &:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+
+      &:hover {
+        background: var(--blue) !important;
+      }
+    }
+  }
+}

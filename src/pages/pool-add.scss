@@ -1,3 +1,191 @@
 /* ----------------------------------------------------
    POOL ADD
+   Rule34 DOM: #content > h3 + form > table.form
+   (#pool_name, #pool_type, #pool_description, Turnstile).
+   Patterns from gelbooru pool-add; tokens Everforest.
    ---------------------------------------------------- */
+
+#header #subnavbar > li > a[href*="page=pool"][href*="s=add"] {
+  font-weight: 600;
+}
+
+div#content {
+  padding: 1.25rem 20px 2rem !important;
+  text-align: left;
+
+  @media only screen and (min-width: 851px) {
+    padding-left: 60px !important;
+  }
+
+  > h3 {
+    margin: 0 0 1rem;
+    font-family: var(--font-sans);
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.25;
+    color: var(--fg);
+  }
+}
+
+div#content table.form {
+  width: auto !important;
+  max-width: 42rem;
+
+  th,
+  td {
+    width: auto !important;
+    border: none !important;
+    background: transparent !important;
+    color: var(--fg) !important;
+    text-align: left !important;
+    vertical-align: top;
+    font-weight: normal;
+  }
+
+  th {
+    padding: 0.55rem 1.25rem 0.55rem 0;
+    min-width: 8rem;
+    white-space: normal;
+    background: transparent !important;
+    color: var(--fg) !important;
+    border: none !important;
+    border-radius: 0 !important;
+
+    label {
+      color: var(--fg);
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0.4rem 0 0;
+      max-width: 18rem;
+      color: var(--grey1) !important;
+      font-weight: normal;
+      line-height: 1.5;
+
+      > br {
+        display: none;
+      }
+
+      span {
+        display: block;
+        margin: 0.25rem 0 0;
+      }
+
+      a {
+        color: var(--grey0) !important;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--blue) !important;
+        }
+      }
+    }
+  }
+
+  td {
+    padding: 0.55rem 0;
+    background: transparent !important;
+  }
+
+  #pool_name,
+  #pool_description {
+    width: min(28rem, 100%);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  #pool_description {
+    min-height: 10rem;
+    resize: vertical;
+  }
+
+  select#pool_type {
+    width: auto !important;
+    min-width: 10rem;
+    max-width: 14rem;
+    box-sizing: border-box;
+    padding: 0.45rem 0.65rem !important;
+    color: var(--fg) !important;
+    background: var(--bg1) !important;
+    border: solid 1px var(--bg2) !important;
+    border-radius: 7px !important;
+    appearance: auto;
+  }
+
+  tr:has(.cf-turnstile) > td {
+    padding-top: 0.25rem;
+  }
+
+  tr:has(input[type="submit"]) > td {
+    padding-top: 1rem;
+  }
+
+  input[name="commit"][type="submit"],
+  input[type="submit"] {
+    margin: 0 0.5rem 0 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--bg_dim) !important;
+    font-weight: 600;
+    background: var(--blue) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--aqua) !important;
+    }
+  }
+
+  input[type="button"] {
+    margin: 0;
+    padding: 0.55rem 1.25rem !important;
+    color: var(--fg) !important;
+    font-weight: 600;
+    background: var(--bg2) !important;
+    border: none !important;
+    border-radius: 7px !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--bg3) !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  div#content table.form {
+    width: 100% !important;
+    max-width: none;
+
+    > tbody > tr {
+      display: block;
+
+      > th,
+      > td {
+        display: block;
+        width: 100% !important;
+        padding-right: 0;
+      }
+
+      > th {
+        padding-bottom: 0.25rem;
+      }
+
+      > td {
+        padding-bottom: 0.85rem;
+      }
+    }
+
+    #pool_name,
+    #pool_description {
+      width: 100%;
+    }
+
+    #pool_type {
+      width: 100% !important;
+      max-width: none;
+    }
+  }
+}
