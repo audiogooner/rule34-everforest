@@ -48,6 +48,10 @@ Semantic colors (`--blue`, `--green`, `--red`, `--yellow`, …) share names; val
 7. **Export:** `npm run export` when testing Stylus.
 8. **Recapture:** `npm run snapshot:fetch -- --only <id>` or **Alt+Shift+S** on a live tab (logged-in / JS-heavy).
 
+## Style preview (userstyles.world)
+
+`npm run preview:shot` captures a 16:9 WebP of the homepage with the theme applied (`preview/homepage.webp`, gitignored). Hook: `scripts/preview.mjs`. Needs `playwright` + `sharp` and `npx playwright install chromium` once. Headless Chromium often gets Rule34’s CAPTCHA — if that happens, retry from a network/session the site already trusts.
+
 ## Recurring UI patterns (foundation in `base.scss`)
 
 | Pattern | Where |

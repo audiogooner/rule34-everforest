@@ -282,6 +282,11 @@ export const bundles = [
 export const exportFile = "rule34.user.css";
 export const exportMinFile = "rule34.min.user.css";
 
+export const preview = {
+  file: "scripts/preview.mjs",
+  out: "preview/homepage.webp",
+};
+
 const live = { userscriptOnly: true };
 
 export const snapshotPages = [

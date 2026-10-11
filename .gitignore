@@ -1,3 +1,4 @@
 node_modules/
 snapshots/previews/
+preview/
 lint-results.json

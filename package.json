@@ -2,16 +2,23 @@
   "name": "rule34-everforest",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "userstyle-dev dev",
     "export": "userstyle-dev export",
     "lint:styles": "userstyle-dev lint",
     "doctor": "userstyle-dev doctor",
-    "check": "userstyle-dev check",
+    "test": "node --test test/*.test.mjs",
+    "check": "node --test test/*.test.mjs && userstyle-dev check",
     "snapshot:fetch": "userstyle-dev snapshot",
-    "preview:install": "userstyle-dev preview:install"
+    "preview:install": "userstyle-dev preview:install",
+    "preview:shot": "userstyle-dev preview"
   },
   "devDependencies": {
-    "userstyle-dev": "^0.1.0"
+    "playwright": "^1.64.0",
+    "sharp": "^0.35.5",
+    "userstyle-dev": "^0.1.9"
   }
 }
